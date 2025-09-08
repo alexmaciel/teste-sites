@@ -1,0 +1,24 @@
+<div class="row row-cols-2 row-cols-lg-2 row-cols-xl-3 g-4">
+    @if(technology.items$ | async; as technology) {
+        @for (item of items.items$ | async; track item.id) {                        
+            <div class="col">
+                <div class="card card-reset card-stretch">   
+                    <div class="card-body p-0">     
+                        @if(item.file_name !== '') {
+                            <div class="mb-6">   
+                                <span
+                                    [inlineSVG]="technology.folder + '/icons/' + item.file_name" 
+                                    class="svg-icon svg-icon-secondary svg-icon-4tx">
+                                </span>                                                                  
+                            </div>                                                
+                        }                                                
+                        <h1 class="fs-1 fw-light text-primary mb-4 mb-lg-8">{{ item.name }}</h1>
+                        <div class="fw-normal">      
+                            <div [innerHTML]="item.description | safe:'html'"></div>                                          
+                        </div>                                                             
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

@@ -1,0 +1,26 @@
+<div class="modal-header align-items-center justify-content-between border-0 position-absolute z-index-2 w-100 px-4">
+    <div class="modal-title fs-4 fw-semibold text-white">
+        {{ videoName }}
+    </div>
+    <button 
+        type="button"
+        class="btn btn-icon btn-close btn-light btn-active-light-primary" data-bs-dismiss="modal" data-dismiss="modal" aria-label="close"  
+        (click)="modal.close()">
+        <span
+            [inlineSVG]="'./assets/img/close.svg'" class="svg-icon svg-icon-2x svg-icon-white">
+        </span>          
+    </button>      
+</div>
+<div class="modal-body bg-transparent p-0">
+    <div class="card card-reset card-rounded card-stretch-100 overflow-hidden">
+        <div class="card-body bg-transparent p-0">
+            <ngx-youtube-player
+                [videoId]="videoId"
+                [playerVars]="{ autoplay: 0, controls: 1 }"
+                (ready)="onPlayerReady($event)"
+                (stateChange)="onPlayerState($event)"
+                (error)="onPlayerError($event)">
+            </ngx-youtube-player>    
+        </div>
+    </div>
+</div>

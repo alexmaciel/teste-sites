@@ -1,0 +1,45 @@
+<ngx-swiper swiperContainerId="index-slider" [config]="config">
+    <swiper-container #swiper class="slider" init="false">
+        @for (slide of slides.items$ | async; track slide.id) {
+            <swiper-slide class="slider-slide">
+                <div 
+                    class="slider-image"
+                    [ngClass]="{'bg-gradient': slide.mask === '0'}">
+                    <div class="container-image">
+                        <img 
+                            [ngSrc]="slide.pictures.thumb" 
+                            ngSrcset="100w" sizes="100vw" priority fetchpriority="auto" fill style="position: initial;" 
+                            [alt]="slide.pictures.subject" 
+                            class="image" 
+                        />
+                    </div>
+                </div>
+                <div 
+                    class="slider-content">
+                    <div class="container-xxl">
+                        <div class="row justify-content-center justify-content-lg-end">
+                            <div class="col-lg-6 col-xl-6">
+                                <div class="slider-title">
+                                    <h1 class="fs-2tx fw-bold mb-2">{{ slide.name }}</h1>
+                                    <p 
+                                        class="fs-6 fs-normal slider-description mb-6 mb-lg-12"
+                                        [innerHTML]="slide.description">
+                                    </p> 
+                                    @if (slide.link) {
+                                        <a [href]="slide.link" class="btn btn-lg btn-primary btn-motion btn-active-primary btn-active-motion-secondary" aria-label="saiba mais">
+                                            <span class="btn-title">
+                                                <span [title]="'button.knowBtn' | translate">{{ 'button.knowBtn' | translate }}</span>
+                                            </span> 
+                                            <span class="btn-motion-ripple"><span></span></span>                                
+                                        </a>   
+                                    }
+                                </div>
+                            </div>                          
+                        </div>
+                    </div>
+                </div>
+            </swiper-slide>   
+        }             
+    </swiper-container>
+    <div class="swiper-pagination slider-pagination"></div>
+</ngx-swiper>

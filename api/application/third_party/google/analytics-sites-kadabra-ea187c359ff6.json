@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "analytics-sites-kadabra",
+  "private_key_id": "ea187c359ff66e3d324c444a06d96552501eace6",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCadp91AeJTH6T4\nZ1kfFpxlvTRbJEG3dkjGqoSpU2sU2NBJFQ5Gw/2H3tbntZq83aNOKB4vTaxkA7Bj\nlUzDKSJc3dKD2GvYWLZrQDzjp/AJ7dhIr29CQsNVHDgHYeGvupDYtbPo+22qUTHQ\nO/NeFVakIxtMjTXC1s9dEcGMVmVpY/XGhFl7vhsPFoIn+S3pIeqPYrnASiw6+i6N\nqrzuqOhORcYumhK6PgabFfPL5wfHBFyxehI25dzdcNgc2l077lmZz4M14rduGVY5\n3xx8PkIZeVGv5MIcGMd6XMZAYdWovH7crBECaX6VxaKHbk835HU4MrgE0YuqeuGt\nTQxu5MitAgMBAAECggEAAOg2soymw4sCoHH47SVKwEGCXREyCV7zIOIoWtwhG3Nx\n9sOZS2v6Q8WO1kHHly1O4BE4XFAZv4yI19tUbLU09aBijJR46wtkBD0vFb2Nozhd\n1PasKn7kOH+PLOd2JyhwJfmmHcRHdODEnIY7c1CWuf4mP1VvV96EL/XxXjTwho8o\nP6Mm0e2objwHqI1hkc5P5/hL/8bQPmZ+eNY1pJ3wGPka0f0T0cVX6Y9ttGgCln1D\ncBEE2lVhxxmVffAbjf/EO+ESMRPZqcrHxalZBgpaqQy7FUnt247dYlo2f1bGYTHq\nAU1Ax7I0YBQx3X0/9X35CASqc7s88/KriPOcUbLo6QKBgQDHzbAYEglHkvse+IA/\n6L+R69MDkw6OF1TOujVx5SaTmdkyO9pesNnh58f65xDXaxN6nUicRw+JDqbYEqsn\nsQNUeOZ7mcIqdb95O2ZCYUPSL4NC6DmFSB0FH1HcL22N8gm1EPigTh+cI+rlyKQQ\njhvpa8aSgjciZ8LZiAFsqGrBKQKBgQDF6FfSH4rCL2vn1OtY11Zsj1FcJq4nWqiK\nwJj7iYADfFNwY6O6RxEUiCYhBCLARBgF5MPM0FQfoTb5sX9UEcJNeI+LCP6vNVQA\nFPg8gmqaD//RpfRiqV35Ssvs9gaRSS9s38C9hsx9xwnv+0GtQ/f2S5gbEFLcG8np\nxigGG4rn5QKBgCV4wvTQtSLSQvx8+HiD6yGvy6RY+RrW71XSAGH66vA1o1FTflHR\n8xr2AEBjA3qTH1UYmFyOyzAWKl5NqgHIpeo6vmch4BNcf+t5o2UBntmVhZWPvfHs\nI10pkY2s62v6n61woGBYJn9/EPfFWFeufzeYueYSO8rdEOMBKds5/sN5AoGAQ5X2\nL9b/vxMMya5H9R4M8KP9B/hZryzhtAjT9creQdJ6eD4+0sWkSpu4Ubwk1f4rKhAW\n4eIfaHHY4WrBbgdmkKhkdPnMaC9REXoX0CpFl3lxRrpi/DKU2ia1/6WBVqpknMzI\n+LCJM0b+2Mq4giBdFOp59nwbn/mJeeFnF7beOBUCgYB+u1uqPF6mK1fYbCXZGw1X\nxBiDuSRS/YZ/ckyE8kHv+yHGnSX0YrBgyvUdmIiXCsPCMKV+5EN+XKXvA8eyBHuN\nWaJJVRQLJyhScUDR0VfSuaFmdLonuPfTfnEl+fqM3AK1pkTLX+pTjJvT41iIvvJa\nJwN81jkMzTqSQCTHeQZN8g==\n-----END PRIVATE KEY-----\n",
+  "client_email": "analytics-sites-kadabra@appspot.gserviceaccount.com",
+  "client_id": "",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/analytics-sites-kadabra%40appspot.gserviceaccount.com"
+}

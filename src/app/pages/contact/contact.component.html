@@ -1,0 +1,267 @@
+<div class="page-contact">      
+    <section class="page-title bg-secondary">
+        <div class="app-content-container">    
+            <div class="container-xxl">
+                <div class="row align-items-center mb-10"></div>
+            </div>
+        </div>        
+    </section>  
+    <section class="pt-0 mt-lg-n20">
+        <div class="app-content-container">
+            <div class="container-xxl">  
+                <div class="contact-cards">
+                    <div class="card card-rounded">   
+                        <div class="card-body p-lg-14">   
+                            <div class="row">  
+                                <div class="col-12 d-flex flex-column">                       
+                                    <div class="section-head mb-8">
+                                        <span [translate]="'header.requestTitle'"></span>
+                                    </div>  
+                                    <h1 class="fs-1 fw-normal text-primary mb-8 mb-lg-12">
+                                        {{ 'header.contactTitle' | translate }}                                
+                                    </h1>                                      
+                                </div>
+                            </div>    
+                            <div class="row">
+                                <div class="col">
+                                    <div class="d-flex flex-column flex-lg-row">
+                                        <div class="flex-lg-row-fluid mb-10 mb-lg-0 me-xl-15">                     
+                                            <form class="form form-label-right" [formGroup]="formGroup">
+                                                <div class="form-group row mb-4">
+                                                    <div class="col-lg-6">
+                                                        <div class="form-floating">
+                                                            <input 
+                                                                type="text"
+                                                                name="firstname"
+                                                                id="firstname"
+                                                                [placeholder]="'&nbsp;'"
+                                                                class="form-control form-control-solid form-control-lg" 
+                                                                [class.is-invalid]="isControlInvalid('firstname')"
+                                                                [class.is-valid]="isControlValid('firstname')"                        
+                                                                formControlName="firstname"
+                                                                aria-label="first name"
+                                                            />    
+                                                            <label for="firstname" class="form-label required">{{ 'form.firstNameField' | translate }}</label>
+                                                            <div class="valid-feedback" *ngIf="isControlValid('firstname')">{{ 'form.propertyfieldMsg' | translate }}</div>
+                                                            <div class="invalid-feedback" *ngIf="controlHasError('required', 'firstname')">{{ 'form.firstNameReqVal' | translate }}</div>                             
+                                                            <div class="invalid-feedback" *ngIf="controlHasError('minlength', 'firstname')">{{ 'form.propertyMinimumReq' | translate: {min: '3'} }}</div>                              
+                                                            <div class="invalid-feedback" *ngIf="controlHasError('maxLength', 'firstname')">{{ 'form.propertyMaximumReq' | translate: {max: '20'} }}</div>                                                                      
+                                                        </div>     
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="form-floating">
+                                                            <input 
+                                                                type="text"
+                                                                name="lastname"
+                                                                [placeholder]="'&nbsp;'"
+                                                                class="form-control form-control-solid form-control-lg" 
+                                                                [class.is-invalid]="isControlInvalid('lastname')"
+                                                                [class.is-valid]="isControlValid('lastname')"     
+                                                                formControlName="lastname"
+                                                                aria-label="last name"
+                                                            />
+                                                            <label for="lastname" class="form-label required">{{ 'form.lastNameField' | translate }}</label>
+                                                            <div class="valid-feedback" *ngIf="isControlValid('lastname')">{{ 'form.propertyfieldMsg' | translate }}</div>
+                                                            <div class="invalid-feedback" *ngIf="controlHasError('required', 'lastname')">{{ 'form.lastNameReqVal' | translate }}</div>                             
+                                                            <div class="invalid-feedback" *ngIf="controlHasError('minlength', 'lastname')">{{ 'form.propertyMinimumReq' | translate: {min: '3'} }}</div>                              
+                                                            <div class="invalid-feedback" *ngIf="controlHasError('maxLength', 'lastname')">{{ 'form.propertyMaximumReq' | translate: {max: '20'} }}</div>                                           
+                                                        </div>
+                                                    </div>                                                    
+                                                </div>  
+                                                <div class="form-group row mb-4">
+                                                    <div class="col-lg-6">   
+                                                        <div class="input-group input-group-solid input-group-lg">                                    
+                                                            <div class="form-floating">  
+                                                                <input
+                                                                    class="form-control form-control-lg"
+                                                                    type="email"
+                                                                    name="email"
+                                                                    [placeholder]="'&nbsp;'"
+                                                                    [class.is-invalid]="isControlInvalid('email')"
+                                                                    [class.is-valid]="isControlValid('email')" 
+                                                                    formControlName="email" 
+                                                                    aria-label="email"
+                                                                />
+                                                                <label class="form-label required">{{ 'form.emailAddressField' | translate }}</label>
+                                                            </div>  
+                                                            <div class="input-group-text">
+                                                                <span [inlineSVG]="'./assets/img/mail.svg'" class="svg-icon svg-icon-6 m-0"></span>                       
+                                                            </div>                                      
+                                                        </div>                            
+                                                        <div class="valid-feedback" *ngIf="isControlValid('email')">{{ 'form.propertyfieldMsg' | translate }}</div>
+                                                        <div class="invalid-feedback" *ngIf="controlHasError('required', 'email')">{{ 'form.emailReqVal' | translate }}</div>                             
+                                                        <div class="invalid-feedback" *ngIf="controlHasError('pattern', 'email')">{{ 'form.emailPaternVal' | translate }}</div>                                 
+                                                    </div>
+                                                    <div class="col-lg-6">    
+                                                        <div formGroupName="country_phone">  
+                                                            <div class="input-group input-group-solid input-group-lg">  
+                                                                <!--
+                                                                    <div ngbDropdown>
+                                                                        <button type="button" class="btn btn-reset bg-transparent" ngbDropdownToggle>
+                                                                            {{ formGroup.value.country_phone.country.code }}
+                                                                        </button>
+                                                                        <div class="dropdown-menu" ngbDropdownMenu>
+                                                                            <ng-container *ngFor="let item of countriesPhone">
+                                                                                <li><a class="dropdown-item" href="#">{{ item.name }}</a></li>
+                                                                            </ng-container>
+                                                                        </div>                                                                                                  
+                                                                    </div>
+                                                                -->
+                                                                <div class="form-floating">  
+                                                                    <input
+                                                                        type="tel"
+                                                                        name="phonenumber"
+                                                                        [placeholder]="'&nbsp;'"
+                                                                        class="form-control form-control-lg"   
+                                                                        [class.is-invalid]="isControlInvalid('country_phone')"
+                                                                        [class.is-valid]="isControlValid('country_phone')"                                                                                                      
+                                                                        formControlName="phonenumber"
+                                                                        aria-label="phone"
+                                                                    />
+                                                                    <label class="form-label required">{{ 'form.phoneField' | translate }}</label>
+                                                                </div>  
+                                                                <div class="input-group-text">
+                                                                    <span [inlineSVG]="'./assets/img/phone.svg'" class="svg-icon svg-icon-6 m-0"></span>
+                                                                </div>                                      
+                                                            </div>                                                                          
+                                                            <span class="form-text text-muted">Sempre que o usuário digitar e sair do campo, o número é convertido para E.164</span>
+                                                            <div class="valid-feedback" *ngIf="isControlValid('country_phone')">{{ 'form.propertyfieldMsg' | translate }}</div>
+                                                            <div class="invalid-feedback" *ngIf="controlHasError('required', 'country_phone')">{{ 'form.phoneReqVal' | translate }}</div>   
+                                                            <div class="invalid-feedback" *ngIf="controlHasError('pattern', 'country_phone')">{{ 'form.numberOnlyHelper' | translate }}</div>    
+                                                        </div>                               
+                                                    </div> 
+                                                </div>
+                                                <div class="form-group row mb-4">
+                                                    <div class="col-lg-12">
+                                                        <label class="form-label required" for="message">&nbsp;</label>   
+                                                        <quill-editor
+                                                            name="message"
+                                                            formControlName="message"
+                                                            placeholder="Escreve sua mensagem"
+                                                            [class.is-invalid]="isControlInvalid('message')"
+                                                            [class.is-valid]="isControlValid('message')"                                       
+                                                            class="form-control form-control-solid w-100"
+                                                            aria-label="message">
+                                                            <div quill-editor-toolbar>                                      
+                                                                <span class="ql-formats">
+                                                                    <button class="ql-bold" [title]="'Bold'"></button>
+                                                                    <button class="ql-italic" [title]="'Italic'"></button>
+                                                                    <button class="ql-underline" [title]="'Undeline'"></button>
+                                                                </span>                            
+                                                                <span class="ql-formats">
+                                                                    <button class="ql-clean" [title]="'Clean'"></button>
+                                                                </span>
+                                                            </div>                                
+                                                        </quill-editor>                                                                    
+                                                        <div class="valid-feedback" *ngIf="isControlValid('message')">{{ 'form.propertyfieldMsg' | translate }}</div>
+                                                        <div class="invalid-feedback" *ngIf="controlHasError('required', 'message')">{{ 'form.messageReqVal' | translate }}</div>                             
+                                                        <div class="invalid-feedback" *ngIf="controlHasError('minlength', 'message')">{{ 'form.propertyMinimumReq' | translate: {min: '3'} }}</div>                                                                                      
+                                                    </div>
+                                                </div>   
+                                                <div class="form-group row mb-4">
+                                                    <div class="col-lg-12">
+                                                        <div class="d-flex align-items-start justify-content-between">
+                                                            <div class="form-check form-check-custom form-check-solid form-check-md w-md-400px">
+                                                                <input class="form-check-input" type="checkbox" formControlName="terms" id="politica" checked="checked" />
+                                                                <label class="form-check-label" for="politica">
+                                                                    {{ 'form.policyField' | translate }} <a [routerLink]="['/tdu']" class="fw-semibold text-primary">{{ 'nav.privacyNav' | translate }}</a>
+                                                                </label>
+                                                            </div>                                     
+                                                            <div class="d-flex align-items-center py-3"> 
+                                                                <button type="submit" (click)="onSubmit()" [disabled]="formGroup.invalid" class="btn btn-lg btn-primary btn-motion btn-active-primary btn-active-motion-secondary rounded-pill" data-magnet>
+                                                                    <ng-container *ngIf="isLoading$ | async">
+                                                                        <span class="indicator-progress" [style.display]="'block'">
+                                                                        Sending...
+                                                                        <span
+                                                                            class="spinner-border spinner-border-sm align-middle m-2"
+                                                                        ></span>
+                                                                        </span>
+                                                                    </ng-container>     
+                                                                    <ng-container *ngIf="!(isLoading$ | async)">   
+                                                                        <span class="btn-icon">
+                                                                            <span [inlineSVG]="'./assets/img/plane.svg'" class="svg-icon svg-icon-dark svg-icon-4 me-1"></span>               
+                                                                        </span>      
+                                                                        <span class="btn-title">
+                                                                            <span title="enviar" class="indicator-label">{{ 'button.sendBtn' | translate }}</span>
+                                                                        </span> 
+                                                                        <span class="btn-motion-ripple"><span></span></span> 
+                                                                    </ng-container>
+                                                                </button>               
+                                                            </div>  
+                                                        </div> 
+                                                    </div>                                                                                                                          
+                                                </div>                                                                                                  
+                                            </form>
+                                        </div>
+                                        <div class="flex-column flex-lg-row-auto w-100 mw-lg-250px mw-xxl-300px">
+                                            @if(settings.settings$ | async; as set) {
+                                                <div>
+                                                    <!--
+                                                        <div class="d-flex flex-column flex-stack">
+                                                            <a href="tel:{{ set.company_phonenumber }}" class="btn btn-lg btn-outline btn-motion btn-active-transparent btn-active-motion-secondary btn-active-icon-white mb-4" aria-label="telefone">
+                                                                <span class="btn-title">
+                                                                    <span [title]="set.company_phonenumber">{{ set.company_phonenumber }}</span>
+                                                                </span> 
+                                                                <span class="btn-icon">
+                                                                    <span [inlineSVG]="'./assets/img/phone.svg'" class="svg-icon svg-icon-dark svg-icon-4 ms-2"></span>               
+                                                                </span>                                                               
+                                                                <span class="btn-motion-ripple"><span></span></span>                                
+                                                            </a>  
+                                                            @if(set.company_alt_phonenumber){
+                                                                <a href="tel:{{ set.company_alt_phonenumber }}" class="btn btn-lg btn-outline btn-motion btn-active-transparent btn-active-motion-secondary btn-active-icon-white mb-4" aria-label="telefone">
+                                                                    <span class="btn-title">
+                                                                        <span [title]="set.company_alt_phonenumber">{{ set.company_alt_phonenumber }}</span>
+                                                                    </span> 
+                                                                    <span class="btn-icon">
+                                                                        <span 
+                                                                            [inlineSVG]="'./assets/img/whatsapp.svg'" class="svg-icon svg-icon-dark svg-icon-4 ms-2">
+                                                                        </span>               
+                                                                    </span>    
+                                                                    <span class="btn-motion-ripple"><span></span></span>                                
+                                                                </a>   
+                                                            }
+                                                        </div>
+                                                        <div class="d-flex flex-column flex-wrap align-items-start">
+                                                            <p class="mb-6" [innerHtml]="set.company_address"></p>
+                                                        </div>  
+                                                    -->
+                                                    <div class="d-flex flex-column flex-wrap align-items-start">
+                                                        <p class="fw-semibold text-secondary mb-1">{{ 'header.requestInfo' | translate }}</p>
+                                                    </div>                                                          
+                                                    <a href="mailto:{{ set.company_email }}" class="btn btn-link text-primary" aria-label="email">
+                                                        <span class="btn-title">
+                                                            <span [title]="set.company_email">{{ set.company_email }}</span>
+                                                        </span>                              
+                                                    </a> 
+                                                    <div class="d-flex align-items-stretch">
+                                                        <div class="d-flex flex-column">
+                                                            <h4 class="fs-6 fw-bold mt-8">{{ 'header.follow' | translate }}</h4>
+                                                            <div class="d-flex align-items-stretch">
+                                                                <div class="d-flex align-items-center">
+                                                                    @for (social of socials.items$ | async; track social.id) {
+                                                                        <a 
+                                                                            [href]="social.link"
+                                                                            class="btn btn-icon btn-sm btn-transparent btn-icon-secondary btn-active-icon-primary me-2">
+                                                                            <span
+                                                                                [inlineSVG]="'./assets/img/social/logo-'+social.name+'.svg'" 
+                                                                                class="svg-icon svg-icon-dark svg-icon-1">
+                                                                            </span>           
+                                                                        </a>                       
+                                                                    }                       
+                                                                </div>  
+                                                            </div>                        
+                                                        </div>
+                                                    </div> 
+                                                </div>
+                                            }                                            
+                                        </div>                                        
+                                    </div>
+                                </div>                              
+                            </div>                             
+                        </div>                      
+                    </div>
+                </div>                 
+            </div>
+        </div>
+    </section>    
+</div>

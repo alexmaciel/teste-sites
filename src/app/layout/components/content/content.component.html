@@ -1,0 +1,15 @@
+<!--Content-->
+@if(!translation.isTranslationsLoaded) {
+    <div class="loading-screen">
+    <div class="spinner"></div>
+    <p>Loading...</p>
+    </div>
+} 
+@if(translation.isTranslationsLoaded) {
+    <div 
+        class="app-container-fit-desktop"
+        [ngClass]="appContentContainerClass + ' ' + contentContainerCSSClass"
+        [ngClass]="{'container-xxl': appContentContainer === 'fixed', 'container-fluid': appContentContainer === 'fluid'}">
+        <router-outlet />
+    </div>
+}

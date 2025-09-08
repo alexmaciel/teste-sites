@@ -1,0 +1,66 @@
+<div class="container-xxl">
+    <div class="row align-items-center">  
+        <div class="index-technology-image"></div>
+        <div class="col-lg-6 col-xl-5"> 
+            <div class="container-image">
+                <img 
+                    [ngSrc]="'./assets/img/captus-back.png'" ngSrcset="33w" sizes="33vw" priority fill 
+                    [alt]="'Captus'"
+                    style="position: initial;"
+                    class="image hover-elevate-up"
+                />
+            </div>                
+        </div>        
+        <div class="col-lg-6 col-xl-6 offset-xl-1">   
+            @if(technology.items$ | async; as item) {
+                <div class="section-head mb-8">
+                    <span [translate]="'header.technologyTitle'"></span>
+                </div>                 
+                <div class="fs-5 fw-normal mb-16">      
+                    <div [innerHTML]="item.description | safe:'html'"></div>                                          
+                </div>
+                <div class="d-flex align-items-center">
+                    <button [routerLink]="['/technology'] | localize" class="btn btn-lg btn-primary btn-active-light btn-motion btn-active-motion-secondary me-4" aria-label="Read More">
+                        <span class="btn-title">
+                            <span [title]="'button.knowBtn' | translate">{{ 'button.knowBtn' | translate }}</span>
+                        </span> 
+                        <span class="btn-motion-ripple"><span></span></span>
+                    </button>
+                    <button class="btn btn-lg btn-outline btn-active-outline-light btn-active-light btn-motion btn-active-motion-primary" aria-label="Read More">
+                        <span class="btn-title">
+                            <span [title]="'button.videoBtn' | translate">{{ 'button.videoBtn' | translate }}</span>
+                        </span> 
+                        <span class="btn-motion-ripple"><span></span></span>
+                    </button>                    
+                </div>
+                    
+            }
+        </div>      
+    </div>
+    <div class="row">
+        <div class="row row-cols-2 row-cols-lg-2 row-cols-xl-3 g-4">
+            @if(technology.items$ | async; as technology) {
+                @for (item of items.items$ | async; track item.id) {                        
+                    <div class="col">
+                        <div class="card card-reset card-stretch">   
+                            <div class="card-body">     
+                                @if(item.file_name !== '') {
+                                    <div class="mb-6">   
+                                        <span
+                                            [inlineSVG]="technology.folder + '/icons/' + item.file_name" 
+                                            class="svg-icon svg-icon-secondary svg-icon-4tx">
+                                        </span>                   
+                                    </div>                                                
+                                }                                                
+                                <h1 class="fs-1 fw-light text-primary mb-4 mb-lg-8">{{ item.name }}</h1>
+                                <div class="fw-normal">      
+                                    <div [innerHTML]="item.description | safe:'html'"></div>                                          
+                                </div>                                                             
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>    
+</div>

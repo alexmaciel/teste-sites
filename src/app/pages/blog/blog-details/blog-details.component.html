@@ -1,0 +1,113 @@
+<section 
+    class="page-title bg-secondary">    
+    <div class="app-content-container">                  
+        <div class="container-xxl">
+            <div class="d-flex align-items-center justify-content-start ms-lg-16">
+                <div class="d-flex align-items-center justify-content-start z-index-2">
+                    <div class="d-flex flex-row">
+                        @if(post) {
+                            <h1 class="fs-2x fw-bold text-white">
+                                {{ post.name }}
+                            </h1> 
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="pt-0 mt-lg-n12">
+    <div class="app-content-container">
+        <div class="container-xxl">
+            <div class="blog-cards">
+                <div class="card card-rounded">   
+                    <div class="card-body p-lg-14">   
+                        @if(post) {
+                            <div class="d-flex flex-column flex-xl-row">
+                                <div class="d-flex flex-lg-row-fluid">
+                                    <div class="mb-16">
+                                        <div class="mb-8 my-1">
+                                            <div class="d-flex flex-stack align-items-center mb-6 w-100">
+                                                <div class="me-8">
+                                                    <span
+                                                        [inlineSVG]="'./assets/img/time.svg'" 
+                                                        class="svg-icon svg-icon-secondary svg-icon-5 me-1">
+                                                    </span>                                                          
+                                                    <span class="fw-bold text-gray-500 me-4">
+                                                        {{ post.date | datelocale }}
+                                                    </span>
+                                                    <span
+                                                        [inlineSVG]="'./assets/img/bookmark.svg'" 
+                                                        class="svg-icon svg-icon-secondary svg-icon-5 me-1">
+                                                    </span>                                                       
+                                                    @for (cat of categories.items$ | async; track cat.id) {
+                                                        <div class="badge badge-square badge-light-primary me-2">
+                                                            <span>
+                                                                {{ cat.name }}
+                                                            </span>
+                                                        </div>
+                                                    }
+                                                </div>
+                                                <div class="text-end">
+                                                    <span class="fw-semibold text-muted fs-7 ps-2">
+                                                        {{ post.time_read?.minutes }}:{{ post.time_read?.seconds }} {{ 'header.time' | translate }}
+                                                    </span>                                                    
+                                                </div>                                                
+                                            </div>
+                                            <div class="d-flex justify-content-between"></div>
+                                            <div class="overlay mt-8">   
+                                                <!--Image-->
+                                                @if(post.pictures.length > 0){
+                                                    <ngx-swiper swiperContainerId="blog-details-slider" [config]="config">
+                                                        <swiper-container #swiper class="slider" init="false">   
+                                                            @for (pic of post.pictures; track pic.id) {
+                                                                <swiper-slide class="slider-slide">                                                                                                                 
+                                                                    <div class="post-image h-450px">
+                                                                        <div class="container-image rounded-4">
+                                                                            <img 
+                                                                                [ngSrc]="pic.file_name" ngSrcset="100w, 1000w" sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, calc(1600px / 3)" placeholder="40" loading="lazy" fetchpriority="auto" fill
+                                                                                [alt]="pic.subject" 
+                                                                                class="image" 
+                                                                            />                     
+                                                                        </div>
+                                                                    </div>
+                                                                </swiper-slide>
+                                                            }
+                                                        </swiper-container>
+                                                        <div class="swiper-pagination blog-details-pagination"></div>
+                                                    </ngx-swiper>
+                                                } 
+                                            </div>                                        
+                                        </div>
+                                        <div class="fs-5 fw-normal text-dark">
+                                            <div [innerHTML]="post.long_description | safe:'html | style'"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--
+                                    <div class="flex-column flex-lg-row-auto w-100 mw-lg-250px mw-xxl-300px">
+                                        <div class="mb-0">
+                                            <h4 class="fw-bold mb-6">Posts Recentes</h4>  
+                                            <div class="d-flex align-items-start justify-content-between mb-6">
+                                                <div class="symbol symbol-60px symbol-2by3 me-4">
+                                                    <div 
+                                                        class="symbol-label"
+                                                        [style.backgroundImage]="'url(./assets/img/cover-02.jpg)'">
+                                                    </div>                                        
+                                                </div>                           
+                                                <div class="m-0">
+                                                    <a href="#" class="text-gray-900 fw-semibold text-hover-primary fs-6">About Bootstrap Admin</a>
+                                                    <span class="text-gray-600 fw-normal d-block pt-1 fs-7">We’ve been a focused on making a the sky</span>
+                                                </div>                       
+                                            </div>                                                                  
+                                        </div>
+                                    </div>
+                                -->
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

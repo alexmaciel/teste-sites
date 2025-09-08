@@ -1,0 +1,1 @@
+export { NgxYouTubePlayerModule } from './youtube-player.module';

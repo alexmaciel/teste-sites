@@ -1,0 +1,67 @@
+<div class="row g-4">
+    <div class="col-lg-3 col-xl-3 z-index-2">
+        <div class="d-flex flex-lg-column">
+            <h1 class="fs-1 fw-light text-primary mb-4 mb-lg-8">{{ 'header.technologyVideoTitle' | translate }}</h1>
+            <div class="fw-normal">      
+                <p>{{ 'header.technologyVideoInfo' | translate }}</p>                                          
+            </div>  
+            <div class="my-4">
+                <a href="https://www.youtube.com/c/LauraMacció/videos" target="_blank" class="btn btn-lg btn-outline btn-active-outline-light btn-active-light btn-motion btn-active-motion-primary" aria-label="Read More">
+                    <span class="btn-title">
+                        <span [title]="'button.channelBtn' | translate">{{ 'button.channelBtn' | translate }}</span>
+                    </span> 
+                    <span class="btn-motion-ripple"><span></span></span>
+                </a>               
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-8 col-xl-8 offset-lg-1 offset-xl-1">
+        <ngx-swiper swiperContainerId="slider-videos-technology" [config]="config">
+            <swiper-container #swiper class="slider" init="false">
+                @for (vid of videos.items$ | async; track vid.id; let idx = $index) {
+                    <swiper-slide class="slider-slide w-325px w-lg-450px pe-4 pe-8">
+                        <div 
+                            class="card card-bordered card-rounded card-stretch-50 overflow-hidden cursor-pointer"
+                            (click)="openVideo(vid.video_id, vid.name)">
+                            <div class="card-body p-0">
+                                <div class="overlay">
+                                    <div class="overlay-wrapper">
+                                        @if(vid.thumb !== '') {
+                                            <div class="container-image h-500px h-lg-650px">
+                                                <img 
+                                                    [ngSrc]="vid.thumb" 
+                                                    ngSrcset="100w, 1000w" sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, calc(1600px / 4)" placeholder="40" loading="lazy" fetchpriority="auto" fill  
+                                                    [alt]="vid.name" 
+                                                    class="image" 
+                                                    style="position: initial;"
+                                                />
+                                            </div>
+                                        }
+                                        <div class="overlay-layer">
+                                            <div class="overlay-icon z-index-2">
+                                                <span
+                                                    [inlineSVG]="'./assets/img/play-line.svg'" 
+                                                    class="svg-icon svg-icon-4tx svg-icon-white">
+                                                </span>
+                                            </div>
+                                            <div class="overlay-opacity overlay-transform p-8 z-index-2">
+                                                <h4 class="fs-4 font-bold text-white mb-2">
+                                                    {{ vid.name }}
+                                                </h4>
+                                                <p class="text-white" [innerHTML]="vid.description"></p>
+                                            </div>                                            
+                                            <span class="overlay-background"><span></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper-slide>
+                }                              
+            </swiper-container>
+            <div class="position-relative">
+                <div class="swiper-pagination videos-techonology-pagination"></div>
+            </div>            
+        </ngx-swiper>
+    </div>    
+</div>

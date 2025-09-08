@@ -1,0 +1,70 @@
+<div class="row row-cols-1 row-cols-lg-2 g-8" itemscope itemtype="https://schema.org/ItemList https://schema.org/CreativeWork">
+    @for (post of posts.items$ | async; track post.id; let idx = $index) {
+        <div class="col post-list" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <div class="post-list-preview d-flex flex-column">
+                <div class="mb-16">   
+                    <!--Post Item-->
+                    @if(post.pictures.thumb !== '') {
+                        <a [routerLink]="['/blog', post.slug] | localize">
+                            <div class="post-image h-250px mb-8 rounded-4">
+                                <div class="post-icon">
+                                    <button class="btn btn-md btn-icon btn-outline btn-active-outline-white btn-active-transparent btn-icon-white btn-motion btn-active-motion-primary" aria-label="see more">
+                                        <span
+                                            [inlineSVG]="'./assets/img/arrow-right.svg'" 
+                                            class="svg-icon svg-icon-white svg-icon-1">
+                                        </span>       
+                                        <span class="btn-motion-ripple"><span></span></span>
+                                    </button>                                
+                                </div>
+                                <div class="container-image">
+                                    <img 
+                                        itemprop="image"
+                                        [ngSrc]="post.pictures.thumb" ngSrcset="100w, 1000w" sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, calc(1600px / 4)" placeholder="40" loading="lazy" fetchpriority="auto" fill
+                                        [alt]="post.name" 
+                                        class="image" 
+                                    />                     
+                                </div>
+                            </div>
+                        </a>
+                    }
+                    <div class="post-content mb-8">   
+                        <!--Title-->
+                        <a [routerLink]="['/blog', post.slug] | localize" class="fs-4 fw-bold mb-4" itemprop="name"
+                            [innerHTML]="post.name | translate:25">
+                        </a>
+                        <!--Text-->
+                        <div 
+                            class="" itemprop="description"
+                            [innerHTML]="post.description | safe:'html'">
+                        </div>
+                    </div>
+                    <!--Footer-->
+                    <div class="d-flex justify-content-between w-100">  
+                        <div class="d-flex align-items-center pe-2">
+                            <a [routerLink]="['/blog', post.slug] | localize" class="btn btn-md btn-link btn-active-transparent" aria-label="saiba mais">
+                                <span class="btn-title">
+                                    <span [title]="'button.readBtn' | translate">{{ 'button.readBtn' | translate }}</span>
+                                </span>                                                    
+                            </a>                             
+                        </div>
+                    </div>
+                </div>                                            
+            </div>
+        </div>
+    }        
+</div>
+<div class="row">
+    <div class="col-12">
+        <ng-container *ngIf="!isLoading && paginator.total === 0">
+            <app-noresult class="app-noresult" [buttons]="false"></app-noresult>
+        </ng-container>    
+    </div>
+</div>
+<div class="row">
+    <app-paginator
+        class="d-flex flex-stack flex-wrap justify-content-between py-4"
+        [paginator]="paginator"
+        [isLoading]="isLoading"
+        (paginate)="paginate($event)">
+    </app-paginator>      
+</div>

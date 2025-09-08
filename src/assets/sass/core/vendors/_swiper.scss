@@ -1,0 +1,83 @@
+//
+// Swiper
+//
+
+.swiper-pagination {
+	z-index: 991;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets, 
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+	bottom: 14px;
+}
+
+.swiper-pagination-bullet {
+	position: relative;
+	background: var(--#{$prefix}gray-200);
+	opacity: 1;
+	width: 4px;
+	height: 4px;
+    border-radius: 2px;
+    -webkit-transition: width 0.3s;
+	-moz-transition: width 0.3s;
+    transition: width 0.3s
+}
+
+.swiper-pagination .swiper-pagination-bullet-active.swiper-pagination-bullet {
+    width: 14px!important;
+}
+
+.swiper-container-vertical > .swiper-pagination-bullets {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;	
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-moz-box-orient: vertical;
+	-moz-box-direction: normal;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-moz-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;	
+}
+
+.swiper-pagination-bullet-active {
+	background: var(--#{$prefix}text-primary);
+}
+
+.swiper-navigation {
+	position: absolute; 	
+	bottom: 24px;
+	z-index: 991;
+	right: 12.33333333333337vw;
+
+	// Desktop mode
+	@include media-breakpoint-up(lg) {
+		right: 6.66666666666667vw;
+	} 	
+}
+
+@include media-breakpoint-down(sm) {
+	.swiper-navigation {
+		display: none;
+	}
+}
+
+.swiper-button-prev:after, 
+.swiper-rtl .swiper-button-next:after,
+.swiper-button-next:after, 
+.swiper-rtl .swiper-button-prev:after {
+	display: none;
+}
+
+.bg-image {
+	.swiper-pagination-bullet-active {
+		background: var(--#{$prefix}text-secondary);
+	}	
+}

@@ -1,0 +1,174 @@
+<footer
+    class="app-container"
+    [ngClass]="appFooterContainerCSSClass"
+    [ngClass]="{'container-xxl': appFooterContainer === 'fixed', 'container-fluid': appFooterContainer === 'fluid'}">
+    <div class="app-footer-content">
+        <div class="row align-items-center w-100 mb-10">
+            <div class="col">
+                <div class="d-flex flex-column align-items-start">
+                    <a [routerLink]="['/'] | localize" title="metaBix">
+                        <span
+                            [inlineSVG]="'./assets/logos/logo-footer.svg'" class="svg-icon svg-icon-white">
+                        </span>                                               
+                    </a>                           
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="d-flex align-items-center text-end">
+                    <div class="d-flex flex-wrap align-items-center ms-4 ms-lg-8"> 
+                        <button [routerLink]="['/request'] | localize" class="btn btn-primary btn-active-light btn-motion btn-active-motion-light" aria-label="request">
+                            <span class="btn-title">
+                                <span [title]="'button.requestBtn' | translate">{{ 'button.requestBtn' | translate }}</span>
+                            </span> 
+                            <span class="btn-motion-ripple"><span></span></span>
+                        </button>                      
+                    </div>
+                </div>              
+            </div>
+        </div>        
+        <div class="row g-8 g-lg-8">
+            <div class="col-sm-6 col-lg-7 offset-lg-2">
+                <h4 class="fs-6 fw-bold text-white mb-4">{{ 'header.menu' | translate }}</h4>
+                <div class="d-flex align-items-stretch">
+                    <div class="row justify-content-between g-4 g-lg-6 w-100">
+                        <div class="col-lg-6">
+                            <div class="d-flex align-items-stretch">
+                                <ul class="menu menu-column fs-7 fw-light align-items-stretch">
+                                    <li class="menu-item mb-2">
+                                        <a
+                                            class="menu-link me-6 p-0"
+                                            [routerLink]="['/home'] | localize"
+                                            [ngClass]="calculateMenuItemCssClass('/home')">
+                                            {{ 'nav.homeNav' | translate }}
+                                        </a>
+                                    </li>  
+                                    <li class="menu-item mb-2">
+                                        <a
+                                            class="menu-link me-6 p-0"
+                                            [routerLink]="['/technology'] | localize"
+                                            [ngClass]="calculateMenuItemCssClass('/technology')">
+                                            {{ 'nav.technologyNav' | translate }}
+                                        </a>
+                                    </li>                                           
+                                    <li class="menu-item mb-2">
+                                        <a
+                                            class="menu-link me-6 p-0"
+                                            [routerLink]="['/company'] | localize"
+                                            [ngClass]="calculateMenuItemCssClass('/company')">
+                                            {{ 'nav.companyNav' | translate }}
+                                        </a>
+                                    </li>   
+                                    <li class="menu-item mb-2">
+                                        <a
+                                            class="menu-link me-6 p-0"
+                                            [routerLink]="['/team'] | localize"
+                                            [ngClass]="calculateMenuItemCssClass('/team')">
+                                            {{ 'nav.teamNav' | translate }}
+                                        </a>
+                                    </li>                                         
+                                    <li class="menu-item mb-2">
+                                        <a
+                                            class="menu-link me-6 p-0"
+                                            [routerLink]="['/blog'] | localize"
+                                            [ngClass]="calculateMenuItemCssClass('/blog')">
+                                            {{ 'nav.blogNav' | translate }}
+                                        </a>
+                                    </li>                                 
+                                </ul>                                                               
+                            </div>                           
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="d-flex align-items-stretch">
+                                <ul class="menu menu-column fs-7 fw-light align-items-stretch">
+                                    <li class="menu-item mb-2">
+                                        <a
+                                            class="menu-link me-6 p-0"
+                                            [routerLink]="['/contact'] | localize"
+                                            [ngClass]="calculateMenuItemCssClass('/contact')">
+                                            {{ 'nav.contactNav' | translate }}
+                                        </a>
+                                    </li>    
+                                    <li class="menu-item mb-2">
+                                        <a
+                                            class="menu-link me-6 p-0"
+                                            [routerLink]="['/tdu/privacidade'] | localize"
+                                            [ngClass]="calculateMenuItemCssClass('/tdu/privacidade')">
+                                            {{ 'nav.privacyNav' | translate }}
+                                        </a>
+                                    </li>    
+                                    <li class="menu-item mb-2">
+                                        <a
+                                            class="menu-link me-6 p-0"
+                                            [routerLink]="['/tdu/uso'] | localize"
+                                            [ngClass]="calculateMenuItemCssClass('/tdu/uso')">
+                                            {{ 'nav.termsNav' | translate }}
+                                        </a>
+                                    </li>                          
+                                </ul>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-lg-3">
+                <div class="d-flex align-items-stretch">
+                    <div class="d-flex flex-column">
+                        <h4 class="fs-6 fw-bold text-white mb-4">{{ 'header.follow' | translate }}</h4>
+                        <div class="d-flex align-items-stretch">
+                            <div class="d-flex align-items-center">
+                                @for(social of socials.items$ | async; track social.id) {
+                                    <a 
+                                        [href]="social.link" [title]="social.name"
+                                        class="btn btn-icon btn-sm btn-transparent btn-icon-white btn-active-icon-primary me-2">
+                                        <span
+                                            [inlineSVG]="'./assets/img/social/logo-'+social.name+'.svg'" class="svg-icon svg-icon-white svg-icon-1">
+                                        </span>
+                                    </a>   
+                                }                    
+                            </div>                         
+                        </div>                        
+                    </div>
+                </div>
+            </div>  
+        </div>    
+        <div class="separator border-light opacity-25 py-8 py-lg-16"></div>
+        <div class="footer-bottom">
+            @if(settings.settings$ | async; as set) {
+                <div class="">
+                    <span class="sub text-muted">&copy; 2025 - {{set.business_name}}</span>
+                </div>
+            }
+            <!--
+                <div class="d-flex align-items-stretch py-8 py-lg-0">
+                    <ul class="menu menu-row menu-white fs-normal fw-nomal align-items-stretch">
+                        <li class="menu-item">
+                            <a
+                                class="menu-link text-muted text-active-primary me-6 p-0"
+                                [routerLink]="['tdu/privacidade']"
+                                [ngClass]="calculateMenuItemCssClass('/technology')">
+                                Política de Privacidade
+                            </a>
+                        </li>  
+                        <li class="menu-item">
+                            <a
+                                class="menu-link text-muted text-active-primary me-6 p-0"
+                                [routerLink]="['tdu/uso']"
+                                [ngClass]="calculateMenuItemCssClass('/technology')">
+                                Termos de Uso
+                            </a>
+                        </li>                       
+                    </ul>     
+                </div>                
+            -->
+            <div class="">
+                <span class="sub">
+                    <a href="https://mova.ppg.br/" title="Mova Comunicação e Marketing">
+                        <span
+                            [inlineSVG]="'./assets/img/mova.svg'" class="svg-icon svg-icon-4x svg-icon-white img_mova">
+                        </span>                   
+                    </a>
+                </span>
+            </div>                
+        </div>                 
+    </div>
+</footer>

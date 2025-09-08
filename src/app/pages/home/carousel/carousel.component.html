@@ -1,0 +1,36 @@
+<ngx-swiper swiperContainerId="index-carousel" [config]="config">
+    <swiper-container #swiper class="slider" init="false">
+        <swiper-slide class="slider-slide">
+            <div class="container-fluid">
+                <div class="row align-items-center justify-content-center">
+                    <div class="col-lg-6 col-xl-8">            
+                        <div class="slider-image">
+                            <div class="container-image">
+                                <img 
+                                    [ngSrc]="'./assets/img/cover-01.jpg'" 
+                                    ngSrcset="100w" sizes="100vw" priority fetchpriority="auto" fill style="position: initial;" 
+                                    [alt]="'lide.pictures.subject'" 
+                                    class="image" 
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-4">
+                        <div class="slider-content ms-8 ms-lg-16">
+                            <div class="slider-title">
+                                <h1 class="fs-2x fw-bold mb-8">Ideal for real-time monitoring and  evaluation of interventions</h1>
+                            </div>
+                            <button [routerLink]="['/request']" class="btn btn-lg btn-primary btn-motion btn-active-primary btn-active-motion-secondary" aria-label="saiba mais">
+                                <span class="btn-title">
+                                    <span [title]="'button.requestBtn' | translate">{{ 'button.requestBtn' | translate }}</span>
+                                </span> 
+                                <span class="btn-motion-ripple"><span></span></span>                                
+                            </button>                               
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </swiper-slide>
+    </swiper-container>
+    <div class="swiper-pagination carousel-pagination"></div>
+</ngx-swiper>

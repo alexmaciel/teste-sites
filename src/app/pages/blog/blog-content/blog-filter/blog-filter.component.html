@@ -1,0 +1,31 @@
+<div class="card-rounded bg-light px-5 py-10 mb-10">
+    <h4 class="fw-semibold mb-6">{{ 'header.filter' | translate }}</h4>
+    <div class="position-relative" [formGroup]="searchGroup">
+        <i class="position-absolute top-50 translate-middle text-gray-500 ms-6">
+            <span
+                [inlineSVG]="'./assets/img/search.svg'" 
+                class="svg-icon svg-icon-muted svg-icon-3">
+            </span>                  
+        </i>
+        <input type="text" class="form-control ps-10" name="search_string" formControlName="search_string" value="" placeholder="Pesquisar">
+    </div>
+    <div class="separator separator-dashed border-secondary my-6 opacity-50"></div>
+    <div class="menu menu-rounded menu-column menu-active-bg menu-hover-bg menu-title-gray-700 fs-5 fw-semibold">
+        <div class="menu-item">
+            <div class="menu-content mb-0">
+                <span class="menu-section text-muted text-uppercase fs-7 fw-normal">{{ 'header.categories' | translate }}</span>
+            </div>
+        </div>    
+        @for (item of categories.items$ | async; track item.id) {
+            <div class="menu-item">
+                <a 
+                    class="menu-link without-sub py-2"
+                    (click)="onSelectCategory(item.id)"
+                    [ngClass]="{'active': selectedCategory === item.id}">
+                    <span class="menu-title">{{ item.name }}</span>
+                    <span class="menu-badge fs-7 fw-semibold text-muted">{{ item.total }}</span>
+                </a>
+            </div>              
+        }
+    </div>
+</div>

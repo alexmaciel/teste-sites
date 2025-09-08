@@ -1,0 +1,41 @@
+import { Component } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { LayoutInitService } from './services/layout-init.service';
+
+@Component({
+  selector: 'app-layout',
+  templateUrl: './layout.component.html',
+  styleUrl: './layout.component.scss'
+})
+export class LayoutComponent {
+  // Public variables
+  // page
+  pageContainerCSSClasses!: string;
+  // header
+  appHeaderDefaultClass: string = '';  
+  appHeaderDefaultContainer: 'fixed' | 'fluid' = 'fluid';
+  appHeaderDefaultContainerClass: string = '';  
+  headerContainerCssClass: string = '';
+  // content
+  appContentContainer?: 'fixed' | 'fluid' = 'fluid';
+  appContentContainerClass!: string;
+  contentCSSClasses!: string;
+  contentContainerCSSClass!: string;  
+  // footer
+  appFooterContainer?: 'fixed' | 'fluid' = 'fluid';
+  appFooterContainerCSSClass: string = '';
+
+
+  constructor(
+    private router: Router,
+    private initService: LayoutInitService,
+  ) {
+    this.initService.initProps();
+    // define layout type and load layout
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.initService.initProps();
+      }
+    });    
+  }  
+}

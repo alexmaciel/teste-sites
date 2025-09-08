@@ -1,0 +1,72 @@
+<div class="page-technology">                
+    <section class="bg-white">
+        <div class="app-content-container">    
+            <div class="container-xxl">
+                <div class="row align-items-center">  
+                    <div class="technology-image"></div>
+                    <div class="col-lg-6 col-xl-5"> 
+                        <ngx-swiper swiperContainerId="technology-slider" [config]="config">
+                            <swiper-container #swiper class="slider" init="false">
+                                @for (pic of pictures.items$ | async; track pic.id) {
+                                    <swiper-slide class="slider-slide">                        
+                                        <div class="container-image">
+                                            <img 
+                                                [ngSrc]="pic.thumb" ngSrcset="33w" sizes="33vw" priority fill 
+                                                [alt]="pic.subject"
+                                                style="position: initial;"
+                                                class="image"
+                                            />
+                                        </div>                
+                                    </swiper-slide>
+                                }
+                            </swiper-container>
+                            <div class="position-relative">
+                                <div class="swiper-pagination technology-pagination"></div>
+                            </div>
+                        </ngx-swiper>
+                    </div>        
+                    <div class="col-lg-6 col-xl-6 offset-xl-1">   
+                        @if(technology.items$ | async; as item) {
+                            <div class="section-head mb-8">
+                                <span [translate]="'header.technologyTitle'"></span>
+                            </div>                 
+                            <div class="fs-5 fw-normal mb-16">      
+                                <div [innerHTML]="item.long_description | safe:'html'"></div>                                          
+                            </div>
+                        }
+                    </div>      
+                </div>  
+            </div>
+        </div>
+    </section>
+    <section class="bg-white pt-0">    
+        <div class="app-content-container">
+            <div class="container-xxl">
+                <div class="row">                   
+                    <div class="section-head mb-8">
+                        <span [translate]="'header.technologyTitle'"></span>
+                    </div>                          
+                    <app-items></app-items>
+                </div>                  
+            </div>        
+        </div>
+    </section>
+    <section class="section-videos">
+        <div class="separated"></div>        
+        <div class="app-content-container pe-lg-0 pe-xl-0">
+            <div class="container-fluid pe-lg-0 pe-xl-0">
+                <div class="row">                                     
+                    <app-videos class="app-videos"></app-videos>
+                </div>                  
+            </div>        
+        </div>
+    </section>    
+</div>
+<!-- Footer -->
+<div class="app-content-container">
+    <div class="index-cases">
+        <section class="bg-white">
+            <app-cases></app-cases>
+        </section>
+    </div>
+</div>

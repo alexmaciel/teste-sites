@@ -1,0 +1,34 @@
+<!--App-->
+<div class="app-root d-flex flex-column flex-root">
+    <!--Page-->
+    <div class="app-page flex-column flex-column-fluid" data-page-scrolling>
+        <!--Header-->
+        <app-header 
+            class="app-header"
+            [appHeaderDefaultContainer]="appHeaderDefaultContainer" 
+            [appHeaderDefaultContainerClass]="appHeaderDefaultContainerClass">
+        </app-header>  
+        <!--Wrapper-->
+        <div class="app-wrapper flex-column flex-row-fluid">
+            <!--Main-->
+            <div class="app-main flex-column flex-row-fluid">   
+                <!--Content wrapper-->
+                <div class="d-flex flex-column flex-column-fluid">
+                    <app-content 
+                        class="app-content"
+                        [appContentContainer]="appContentContainer" 
+                        [appContentContainerClass]="appContentContainerClass">
+                    </app-content>
+                </div>
+            </div>  
+            <!--Footer-->
+            <app-footer 
+                class="app-footer"
+                [appFooterContainer]="appFooterContainer" 
+                [appFooterContainerCSSClass]="appFooterContainerCSSClass">
+            </app-footer>                      
+        </div>        
+    </div>
+</div>
+<app-scripts-init></app-scripts-init>
+

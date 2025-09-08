@@ -1,0 +1,50 @@
+<div
+  class="
+    d-flex
+    flex-column flex-column-fluid
+    bgi-position-y-bottom
+    position-x-center
+    bgi-no-repeat bgi-size-contain bgi-attachment-fixed"
+    [style.background-image]="'url(./assets/img/error/404.png)'">
+    <section>
+      <div class="d-flex flex-column flex-column-fluid text-center">
+        <a (click)="routeToPage('/home')" class="mb-10 pt-lg-20 cursor-pointer">
+          <img
+            alt="Logo"
+            src="./assets/logos/default.svg"
+            class="h-50px mb-5"
+          />
+        </a>
+        <div class="pt-lg-10">
+          <router-outlet />
+          <div class="text-center">
+            <a
+              (click)="routeToPage('/home')"
+              class="btn btn-lg btn-primary fw-bolder cursor-pointer">
+              {{ 'button.backHomeBtn' | translate }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-center flex-column-auto p-10">
+        <div class="d-flex align-items-center fw-bold fs-6">
+          <a
+            (click)="routeToPage('/company')"
+            class="text-dark text-hover-primary px-3 cursor-pointer">
+            {{ 'nav.companyNav' | translate }}
+          </a>
+          <a
+            (click)="routeToPage('/blog')"
+            class="text-dark text-hover-primary px-3 cursor-pointer">
+            {{ 'nav.blogNav' | translate }}
+          </a>
+          <a
+            (click)="routeToPage('/contact')"
+            class="text-dark text-hover-primary px-3 cursor-pointer">
+            {{ 'nav.contactNav' | translate }}
+          </a>
+        </div>
+      </div>
+  </section>
+</div>
