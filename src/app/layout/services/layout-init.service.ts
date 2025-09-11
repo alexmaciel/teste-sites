@@ -20,7 +20,7 @@ export class LayoutInitService {
             const bodyAttributes = document.body
             .getAttributeNames()
             .filter((t) => t.indexOf('data-') > -1);
-            //bodyAttributes.forEach((attr) => document.body.removeAttribute(attr));
+            bodyAttributes.forEach((attr) => document.body.removeAttribute(attr));
             document.body.setAttribute('style', '');
             document.body.setAttribute('id', 'mv_app_body');
             document.body.setAttribute('data-mv-name', 'metabix');

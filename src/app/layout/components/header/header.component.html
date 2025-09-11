@@ -83,12 +83,10 @@
             </div>    
             <div class="d-flex align-items-center text-end">
                 <div class="d-flex flex-wrap align-items-center ms-4 ms-lg-8"> 
-                    <button [routerLink]="['/request'] | localize" class="btn btn-sm btn-primary btn-active-primary btn-motion btn-active-motion-secondary" aria-label="request">
-                        <span class="btn-title">
-                            <span [title]="'button.requestBtn' | translate">{{ 'button.requestBtn' | translate }}</span>
-                        </span> 
-                        <span class="btn-motion-ripple"><span></span></span>
-                    </button>                      
+                    <app-request
+                        [class]="'btn btn-sm btn-primary btn-active-primary btn-motion btn-active-motion-secondary'"
+                        [title]="'button.requestBtn' | translate">
+                    </app-request>                    
                 </div>
             </div>  
             <div class="d-flex align-items-center text-end d-lg-none">

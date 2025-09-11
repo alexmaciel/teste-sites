@@ -13,12 +13,12 @@
                     <div class="card card-rounded">   
                         <div class="card-body p-lg-14">   
                             <div class="row">  
-                                <div class="col-12 d-flex flex-column">                       
+                                <div class="col-8 d-flex flex-column">                       
                                     <div class="section-head mb-8">
-                                        <span [translate]="'header.requestTitle'"></span>
+                                        <span [translate]="'header.contactTitle'"></span>
                                     </div>  
-                                    <h1 class="fs-1 fw-normal text-primary mb-8 mb-lg-12">
-                                        {{ 'header.contactTitle' | translate }}                                
+                                    <h1 class="fs-4 fw-normal text-primary mb-8 mb-lg-12">
+                                        {{ 'header.contactInfo' | translate }}                                
                                     </h1>                                      
                                 </div>
                             </div>    
@@ -138,7 +138,7 @@
                                                                     <span [inlineSVG]="'./assets/img/phone.svg'" class="svg-icon svg-icon-6 m-0"></span>
                                                                 </div>                                      
                                                             </div>                                                                          
-                                                            <span class="form-text text-muted">Sempre que o usuário digitar e sair do campo, o número é convertido para E.164</span>
+                                                            <span class="form-text text-muted">{{ 'form.numberOnlyHelper' | translate }}</span>
                                                             <div class="valid-feedback" *ngIf="isControlValid('country_phone')">{{ 'form.propertyfieldMsg' | translate }}</div>
                                                             <div class="invalid-feedback" *ngIf="controlHasError('required', 'country_phone')">{{ 'form.phoneReqVal' | translate }}</div>   
                                                             <div class="invalid-feedback" *ngIf="controlHasError('pattern', 'country_phone')">{{ 'form.numberOnlyHelper' | translate }}</div>    

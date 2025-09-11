@@ -16,12 +16,10 @@
             <div class="col-auto">
                 <div class="d-flex align-items-center text-end">
                     <div class="d-flex flex-wrap align-items-center ms-4 ms-lg-8"> 
-                        <button [routerLink]="['/request'] | localize" class="btn btn-primary btn-active-light btn-motion btn-active-motion-light" aria-label="request">
-                            <span class="btn-title">
-                                <span [title]="'button.requestBtn' | translate">{{ 'button.requestBtn' | translate }}</span>
-                            </span> 
-                            <span class="btn-motion-ripple"><span></span></span>
-                        </button>                      
+                        <app-request
+                            [class]="'btn btn-primary btn-active-light btn-motion btn-active-motion-light'"
+                            [title]="'button.requestBtn' | translate">
+                        </app-request>                                               
                     </div>
                 </div>              
             </div>

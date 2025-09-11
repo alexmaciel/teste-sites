@@ -6,7 +6,7 @@ const Routing: Routes = [
       title: 'nav.homeNav',
       data: {
         animation: 'home',
-        reuseComponent: true
+        reuseComponent: false
       },       
       loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
     },   
@@ -15,7 +15,7 @@ const Routing: Routes = [
       title: 'nav.technologyNav',
       data: {
         animation: 'technology',
-        reuseComponent: true
+        reuseComponent: false
       },       
       loadChildren: () => import('./technology/technology.module').then((m) => m.TechnologyModule),
     },
@@ -24,7 +24,7 @@ const Routing: Routes = [
       title: 'nav.companyNav',
       data: {
         animation: 'company',
-        reuseComponent: true
+        reuseComponent: false
       },       
       loadChildren: () => import('./company/company.module').then((m) => m.CompanyModule),
     },  
@@ -33,7 +33,7 @@ const Routing: Routes = [
       title: 'nav.teamNav',
       data: {
         animation: 'team',
-        reuseComponent: true
+        reuseComponent: false
       },       
       loadChildren: () => import('./team/team.module').then((m) => m.TeamModule),
     },   
@@ -42,7 +42,7 @@ const Routing: Routes = [
       title: 'nav.blogNav',
       data: {
         animation: 'blog',
-        reuseComponent: true
+        reuseComponent: false
       },       
       loadChildren: () => import('./blog/blog.module').then((m) => m.BlogModule),
     },      
@@ -51,10 +51,19 @@ const Routing: Routes = [
       title: 'nav.contactNav',
       data: {
         animation: 'contact',
-        reuseComponent: true
+        reuseComponent: false
       },       
       loadChildren: () => import('./contact/contact.module').then((m) => m.ContactModule),
-    },                    
+    },      
+    {
+      path: 'tdu',
+      title: 'nav.privacyNav',
+      data: {
+        animation: 'privacy',
+        reuseComponent: false
+      },       
+      loadChildren: () => import('./tou/tou.module').then((m) => m.TouModule),
+    },                   
     {
         path: '',
         redirectTo: '/home',

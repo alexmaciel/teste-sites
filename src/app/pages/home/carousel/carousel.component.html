@@ -20,12 +20,10 @@
                             <div class="slider-title">
                                 <h1 class="fs-2x fw-bold mb-8">Ideal for real-time monitoring and  evaluation of interventions</h1>
                             </div>
-                            <button [routerLink]="['/request']" class="btn btn-lg btn-primary btn-motion btn-active-primary btn-active-motion-secondary" aria-label="saiba mais">
-                                <span class="btn-title">
-                                    <span [title]="'button.requestBtn' | translate">{{ 'button.requestBtn' | translate }}</span>
-                                </span> 
-                                <span class="btn-motion-ripple"><span></span></span>                                
-                            </button>                               
+                            <app-request
+                                [class]="'btn btn-lg btn-primary btn-motion btn-active-primary btn-active-motion-secondary'"
+                                [title]="'button.requestBtn' | translate">
+                            </app-request>                
                         </div>
                     </div>
                 </div>

@@ -35,6 +35,7 @@ export const routes: Routes = [
     { path: '**', redirectTo: 'error' },     
 ];
 
+/*
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, { initialNavigation: 'disabled' })
@@ -64,3 +65,4 @@ export const routes: Routes = [
 })
 
 export class AppRoutingModule { }
+*/

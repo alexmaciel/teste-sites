@@ -1,5 +1,8 @@
 import { Component, Inject, NgZone, PLATFORM_ID, OnInit, OnDestroy } from '@angular/core';
+import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 
 // amCharts imports
 import * as am5 from "@amcharts/amcharts5";
@@ -18,13 +21,17 @@ export class LocationComponent implements OnInit, OnDestroy {
 
   countries = [
     { id: "BR", polygonSettings: { fill: am5.color(0xE66B23) } }, 
-    { id: "AR", polygonSettings: { fill: am5.color(0xE66B23) } }, // Argentina
-    { id: "PE", polygonSettings: { fill: am5.color(0xE66B23) } }, // Peru
-    { id: "IN", polygonSettings: { fill: am5.color(0xE66B23) } }, // Índia
-    { id: "ID", polygonSettings: { fill: am5.color(0xE66B23) } }
+    { id: "AR", polygonSettings: { fill: am5.color(0xE66B23) } }, 
+    { id: "EC", polygonSettings: { fill: am5.color(0xE66B23) } },
+    { id: "IN", polygonSettings: { fill: am5.color(0xE66B23) } },
+    { id: "ID", polygonSettings: { fill: am5.color(0xE66B23) } },
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: object, private zone: NgZone) {}
+  constructor(
+    private router: Router,
+    private localize: LocalizeRouterService,    
+    @Inject(PLATFORM_ID) private platformId: object, private zone: NgZone
+  ) {}
 
   // Run the function only in the browser
   browserOnly(f: () => void) {
@@ -89,4 +96,12 @@ export class LocationComponent implements OnInit, OnDestroy {
       this.root.dispose();
     }
   }    
+
+  routeToPage(path?: string) {
+    const translatedPath = this.localize.translateRoute(`${path}`);
+
+    this.router.navigate([translatedPath]).then(() => {
+      // console.log(`After navigation I am on: ${translatedPath}`)
+     }); 
+  }   
 }

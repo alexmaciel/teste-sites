@@ -107,6 +107,12 @@ $dark-light: 					#0D0D0F !default;
 $dark-clarity: 					rgba(#131313, 0.2) !default;
 $dark-inverse: 					$white !default;
 
+// Light colors
+$white: 						#ffffff !default;
+$white-active: 					#FCFCFC !default;
+$white-light: 					#F2F3F7 !default;
+$white-clarity: 				rgba(#ffffff, 0.2) !default;
+$white-inverse:					$dark !default;
 
 // Contextual colors
 $theme-colors: (
@@ -118,7 +124,8 @@ $theme-colors: (
 	"info": $info,
 	"warning": $warning,
 	"danger": $danger,
-	"dark": $dark
+	"dark": $dark,
+	"white": $white
 ) !default;
 	
 // Contextual active state colors
@@ -130,7 +137,8 @@ $theme-active-colors: (
 	"info":    $info-active,
 	"warning": $warning-active,
 	"danger":  $danger-active,
-	"dark":    $dark-active
+	"dark":    $dark-active,
+	"white": $white-active
 ) !default; 
 
 // Contextual inverse state colors
@@ -142,7 +150,8 @@ $theme-inverse-colors: (
 	"info":    $info-inverse,
 	"warning": $warning-inverse,
 	"danger":  $danger-inverse,
-	"dark":    $dark-inverse
+	"dark":    $dark-inverse,
+	"white": $white-inverse
 ) !default; 
 
 // Contextual light state colors
@@ -154,7 +163,8 @@ $theme-light-colors: (
 	"warning": $warning-light,
 	"danger":  $danger-light,
 	"dark":    $dark-light,
-	"light":   $light-light
+	"light":   $light-light,
+	"white": $white-light
 ) !default; 
 
 // Contextual light state colors
@@ -167,11 +177,11 @@ $theme-clarity-colors: (
 	"danger":  $danger-clarity,
 	"dark":    $dark-clarity,
 	"light":   $light-clarity,
+	"white": $white-clarity
 ) !default; 
 
 // Text colors
 $theme-text-colors: (
-	"white":   $white,
 	"primary": $primary,
 	"secondary":  $secondary,
 	"light":   $light,
@@ -180,6 +190,7 @@ $theme-text-colors: (
 	"warning": $warning,
 	"danger":  $danger,
 	"dark":    $dark,
+	"white":   $white,
 	"muted":   $text-muted,
 	"gray-100":   $gray-100,
 	"gray-200":   $gray-200,

@@ -1,12 +1,14 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // 3rd-Party plugins variables
 import { InlineSVGModule } from 'ng-inline-svg-2';
+import { NgSelectModule } from '@ng-select/ng-select';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { LocalizeRouterModule } from '@gilsdav/ngx-translate-router';
 import { TranslateModule } from '@ngx-translate/core';
+import { QuillModule } from 'ngx-quill';
 
 // Pagination
 import { NgPagination } from './helpers/paginator/ng-pagination/ng-pagination.component';
@@ -25,7 +27,10 @@ import {
   BlogComponent,
   VideoComponent,
   // Map
-  LocationComponent
+  LocationComponent,
+  // Request
+  RequestComponent,
+  FormComponent,
 } from './components';
 
 // Plugins
@@ -49,11 +54,15 @@ import {
     LocationComponent,
     // Pagination
     NgPagination,
-    PaginatorComponent,       
+    PaginatorComponent,
+    // Request
+    RequestComponent,    
+    FormComponent
   ],
   imports: [
     CommonModule,
     FormsModule, 
+    ReactiveFormsModule,
     // Translate
     TranslateModule,
     LocalizeRouterModule,    
@@ -61,6 +70,8 @@ import {
     NgxSwiperModule,
     NgxYouTubePlayerModule,
     NgxOptimizedImageModule,
+    NgSelectModule,
+    QuillModule,
     InlineSVGModule,  
     NgbModalModule,
   ],
@@ -78,6 +89,8 @@ import {
     BlogComponent,
     // Map
     LocationComponent,
+    // Request
+    RequestComponent,
     // Pagination
     NgPagination,
     PaginatorComponent,          

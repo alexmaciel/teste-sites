@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { NavigationEnd, Router } from '@angular/router';
 import { catchError, filter, Observable, of, Subscription } from 'rxjs';
 
 
@@ -17,7 +18,6 @@ import {
   SocialService,
   Countries,
 } from '../../core';
-import { Router } from '@angular/router';
 
 const LANG_TO_COUNTRY: Record<string, string> = {
   'pt': 'BR',
@@ -64,16 +64,17 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.loadCountries();
     this.loadSocial();
  
+    /*
     const sb = this.router.events.subscribe((event) => {
-      if (event.constructor.name.endsWith('End')) {
+      if (event instanceof NavigationEnd) {
         const newIso = LANG_TO_COUNTRY[this.translation.getSelectedLanguage()] ?? 'UY'; // fallback
 
         this.selectedCountry = this.countriesPhone.filter(c => c.iso === newIso)[0];
-
         console.log(this.selectedCountry)
       }
     });
     this.unsubscribe.push(sb);
+    */
     this.loadForm();
   }
 
@@ -83,11 +84,11 @@ export class ContactComponent implements OnInit, OnDestroy {
   }
 
   loadCountries() {
-    const userLang = this.translation.currentLanguageValue; // idioma ativo do ngx-translate
     const defaultIso = LANG_TO_COUNTRY[this.translation.getSelectedLanguage()] ?? 'UY'; // fallback
 
     const sb = this.countries.getCountries().subscribe((res) => {
       this.countriesPhone = res;
+      this.selectedCountry = this.countriesPhone.filter(c => c.iso == defaultIso)[0];
       //this.selectedCountry = this.countriesPhone[0];
     });  
     this.unsubscribe.push(sb)      
@@ -97,10 +98,10 @@ export class ContactComponent implements OnInit, OnDestroy {
     //  We just use a few random countries, however, you can use the countries you need by just adding them to this list.
     // also you can use a library to get all the countries from the world.    
     const defaultIso = LANG_TO_COUNTRY[this.translation.getSelectedLanguage()]; // fallback    
-    this.selectedCountry = this.countriesPhone.filter(c => c.iso === defaultIso)[0];
+    this.selectedCountry = this.countriesPhone.filter(c => c.iso == defaultIso)[0] ?? 'UY';
 
-    const country = new FormControl(this.selectedCountry?.iso, Validators.required);
-    const phonenumber = new FormControl(this.selectedCountry?.code, Validators.compose([
+    const country = new FormControl(this.selectedCountry?.iso || 'UY', Validators.required);
+    const phonenumber = new FormControl(this.selectedCountry?.code || '598', Validators.compose([
       Validators.required,
       PhoneValidator.validCountryPhone(country)
     ]));

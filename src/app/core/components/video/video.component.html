@@ -1,14 +1,15 @@
 <div class="modal-header align-items-center justify-content-between border-0 position-absolute z-index-2 w-100 px-4">
-    <div class="modal-title fs-4 fw-semibold text-white">
+    <div class="modal-title fs-4 fw-semibold text-white" id="modal-title" ngbAutofocus>
         {{ videoName }}
     </div>
     <button 
         type="button"
-        class="btn btn-icon btn-close btn-light btn-active-light-primary" data-bs-dismiss="modal" data-dismiss="modal" aria-label="close"  
+        class="btn btn-icon btn-light btn-active-light btn-active-icon-white btn-motion btn-active-motion-primary btn-close" data-bs-dismiss="modal" data-dismiss="modal" aria-label="close" aria-describedby="modal-title" 
         (click)="modal.close()">
         <span
-            [inlineSVG]="'./assets/img/close.svg'" class="svg-icon svg-icon-2x svg-icon-white">
-        </span>          
+            [inlineSVG]="'./assets/img/close.svg'" class="svg-icon svg-icon-2x svg-icon-dark">
+        </span>      
+        <span class="btn-motion-ripple"><span></span></span>    
     </button>      
 </div>
 <div class="modal-body bg-transparent p-0">

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewEncapsulation } from '@angular/core';
 
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -6,7 +6,8 @@ import { JsonLdService } from '../../utils';
 
 @Component({
   selector: 'app-video',
-  templateUrl: './video.component.html'
+  templateUrl: './video.component.html',
+  encapsulation: ViewEncapsulation.None,
 })
 export class VideoComponent implements AfterViewInit {
   @Input() videoId: string | undefined;

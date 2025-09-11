@@ -1,0 +1,9 @@
+<button 
+    [ngClass]="class"
+    [attr.aria-label]="title"
+    (click)="open()">
+    <span class="btn-title">
+        <span [title]="'button.requestBtn' | translate">{{ 'button.requestBtn' | translate }}</span>
+    </span> 
+    <span class="btn-motion-ripple"><span></span></span>
+</button>

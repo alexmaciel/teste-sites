@@ -7,7 +7,7 @@ import {
   OnInit,
   Input,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationCancel, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import gsap from 'gsap';
@@ -18,16 +18,20 @@ import gsap from 'gsap';
 export class ToggleMenuDirective implements OnInit, OnDestroy {
   private element!: HTMLElement;
 
-  private aside?: HTMLElement;
-  private asideMenu?: HTMLElement;
-  private asideContent?: HTMLElement;
-  private asideGrid?: HTMLElement;
-  private asideBackdrop?: HTMLElement;
+  private aside!: HTMLElement;
+  private asideMenu!: HTMLElement;
+  private asideContent!: HTMLElement;
+  private asideGrid!: HTMLElement;
+  private asideBackdrop!: HTMLElement;
 
   private clicked = false;
   private subscriptions: Subscription[] = [];
   private unlisteners: (() => void)[] = [];
 
+  private startX = 0;
+  private currentX = 0;
+  private isDragging = false;
+    
   /** Permite customizar os seletores dos elementos */
   @Input() asideSelector = '.app-aside';
   @Input() asideMenuSelector = '.app-aside-menu';
@@ -57,7 +61,7 @@ export class ToggleMenuDirective implements OnInit, OnDestroy {
 
     // Fecha ao navegar
     const sb = this.router.events.subscribe((event) => {
-      if (event.constructor.name.endsWith('End')) {
+      if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
         this.hide();
       }
     });
@@ -71,6 +75,17 @@ export class ToggleMenuDirective implements OnInit, OnDestroy {
     if (this.closeBtn) {
       const unlistenClose = this.renderer.listen(this.closeBtn, 'click', () => this.hide());
       this.unlisteners.push(unlistenClose);
+    }  
+    
+    if (this.asideContent) {
+      // pointer events para drag
+      /**
+       * 
+      const unlistenDown = this.renderer.listen('document', 'pointerdown', this.onDragStart.bind(this));
+      const unlistenMove = this.renderer.listen('document', 'pointermove', this.onDragMove.bind(this));
+      const unlistenUp = this.renderer.listen('document', 'pointerup', this.onDragEnd.bind(this));
+      this.unlisteners.push(unlistenDown, unlistenMove, unlistenUp);
+      */
     }    
   }
 
@@ -96,6 +111,32 @@ export class ToggleMenuDirective implements OnInit, OnDestroy {
       this.renderer.removeAttribute(document.body, 'data-mv-app-aside-minimize');
     }, 500);
     this.animateClose();
+  }
+
+  /** Drag Event */
+  private onDragStart(event: PointerEvent) {
+    this.isDragging = true;
+    this.startX = event.clientX;
+    gsap.set(this.asideContent, { clearProps: 'transition' });
+  }
+
+  private onDragMove(event: PointerEvent) {
+    if (!this.isDragging || !this.asideContent || !this.asideBackdrop) return;
+    this.currentX = event.clientX;
+    const deltaX = Math.min(Math.max(this.currentX - this.startX, -this.asideContent.clientWidth), 0);
+    this.asideContent.style.transform = `translateX(${deltaX}px)`;
+    this.asideBackdrop.style.opacity = `${1 + deltaX / this.asideContent.clientWidth}`;
+  }
+
+  private onDragEnd(event: PointerEvent) {
+    if (!this.isDragging) return;
+    this.isDragging = false;
+    const deltaX = this.currentX - this.startX;
+    if (deltaX > -300) {
+      this.hide(); // arrastou para esquerda → fecha
+    } else {
+      this.show(); // arrastou pouco → volta
+    }
   }
 
   /** Animação de abrir */
