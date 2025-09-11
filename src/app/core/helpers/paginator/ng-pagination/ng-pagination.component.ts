@@ -1,4 +1,4 @@
-// tslint:disable:max-line-length component-class-suffix directive-selector directive-class-suffix component-selector no-host-metadata-property object-literal-key-quotes prefer-const
+
 // fork of https://github.com/ng-bootstrap/ng-bootstrap/blob/master/src/pagination/pagination.ts
 import {
   Component,
@@ -281,8 +281,8 @@ export class NgPagination implements OnChanges {
   private _applyRotation(): [number, number] {
     let start = 0;
     let end = this.pageCount;
-    let leftOffset = Math.floor(this.maxSize / 2);
-    let rightOffset = this.maxSize % 2 === 0 ? leftOffset - 1 : leftOffset;
+    const leftOffset = Math.floor(this.maxSize / 2);
+    const rightOffset = this.maxSize % 2 === 0 ? leftOffset - 1 : leftOffset;
 
     if (this.page <= leftOffset) {
       // very beginning, no rotation -> [0..maxSize]
@@ -303,9 +303,9 @@ export class NgPagination implements OnChanges {
    * Paginates page numbers based on maxSize items per page.
    */
   private _applyPagination(): [number, number] {
-    let page = Math.ceil(this.page / this.maxSize) - 1;
-    let start = page * this.maxSize;
-    let end = start + this.maxSize;
+    const page = Math.ceil(this.page / this.maxSize) - 1;
+    const start = page * this.maxSize;
+    const end = start + this.maxSize;
 
     return [start, end];
   }

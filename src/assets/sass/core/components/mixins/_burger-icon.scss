@@ -72,11 +72,12 @@
 		width: 100%;
 		margin: 5px 0;
 	}
+
 	span:first-child {
-		-webkit-animation: btn-menu-open-top .9s;
-		-moz-animation: btn-menu-open-top .9s;
-		-o-animation: btn-menu-open-top .9s;
-		animation: btn-menu-open-top .9s;
+		-webkit-animation: btn-menu-open-top 1.9s;
+		-moz-animation: btn-menu-open-top 1.9s;
+		-o-animation: btn-menu-open-top 1.9s;
+		animation: btn-menu-open-top 1.9s;
 		top: 4px;
 		-webkit-transform: rotate(45deg) scaleX(1);
 		-moz-transform: rotate(45deg) scaleX(1);
@@ -88,9 +89,9 @@
 	}
 	
 	span:last-child {
-		-webkit-animation: btn-menu-open-bottom .9s;
-		-moz-animation: btn-menu-open-bottom .9s;
-		animation: btn-menu-open-bottom .9s;
+		-webkit-animation: btn-menu-open-bottom 1.9s;
+		-moz-animation: btn-menu-open-bottom 1.9s;
+		animation: btn-menu-open-bottom 1.9s;
 		top: -4px;
 		-webkit-transform: rotate(-45deg) scaleX(1);
 		-moz-transform: rotate(-45deg) scaleX(1);

@@ -38,15 +38,15 @@ export class CasesComponent implements OnInit, OnDestroy {
     spaceBetween: 0,
     loop: false,
     grabCursor: true,
-    keyboard: true,
+    keyboard: false,
     touchStartPreventDefault: true,
     autoplay: {
       delay: 8000,
       disableOnInteraction: false,
     },    
     pagination: {
-      el: '.partner-pagination',
       type: 'bullets', 
+      el: '.partner-pagination',
     },
     navigation: false,   
     breakpoints: {
@@ -54,7 +54,7 @@ export class CasesComponent implements OnInit, OnDestroy {
         slidesPerView: 2,
       },
       '768': {
-        slidesPerView: 3,
+        slidesPerView: 2,
       },
       '1024': {
         slidesPerView: 4,

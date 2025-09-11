@@ -1,10 +1,10 @@
 <div class="container-xxl">
-    <div class="row align-items-center">  
+    <div class="row align-items-center mb-8 mb-lg-0">  
         <div class="index-technology-image"></div>
         <div class="col-lg-6 col-xl-5"> 
             <div class="container-image">
                 <img 
-                    [ngSrc]="'./assets/img/captus-back.png'" ngSrcset="33w" sizes="33vw" priority fill 
+                    [ngSrc]="'./assets/img/captus-back.png'" ngSrcset="25w, 50w" sizes="25vw, 50vw" priority fill 
                     [alt]="'Captus'"
                     style="position: initial;"
                     class="image hover-elevate-up"
@@ -26,7 +26,7 @@
                         </span> 
                         <span class="btn-motion-ripple"><span></span></span>
                     </button>
-                    <button class="btn btn-lg btn-outline btn-active-outline-light btn-active-light btn-motion btn-active-motion-primary" aria-label="Read More">
+                    <button (click)="openVideo()" class="btn btn-lg btn-outline btn-active-outline-light btn-active-light btn-motion btn-active-motion-primary" aria-label="Read More">
                         <span class="btn-title">
                             <span [title]="'button.videoBtn' | translate">{{ 'button.videoBtn' | translate }}</span>
                         </span> 
@@ -43,7 +43,7 @@
                 @for (item of items.items$ | async; track item.id) {                        
                     <div class="col">
                         <div class="card card-reset card-stretch">   
-                            <div class="card-body">     
+                            <div class="card-body p-0 p-lg-10">     
                                 @if(item.file_name !== '') {
                                     <div class="mb-6">   
                                         <span

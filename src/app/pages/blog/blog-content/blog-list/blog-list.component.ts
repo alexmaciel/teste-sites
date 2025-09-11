@@ -27,7 +27,7 @@ export class BlogListComponent
 
   isLoading?: boolean = false;
 
-  selectedCategory: number = 0;
+  selectedCategory = 0;
 
   paginator!: PaginatorState;
   grouping!: GroupingState;
@@ -58,7 +58,7 @@ export class BlogListComponent
 
   // filtration
   filterForm() {
-    let filter: Paging = new Paging();
+    const filter: Paging = new Paging();
     filter['category_id'] = this.selectedCategory;
     filter['search_string'] = '';
     this.filter( filter );
@@ -70,7 +70,7 @@ export class BlogListComponent
 
   // search
   searchForm() {
-    let filter: Paging = new Paging();
+    const filter: Paging = new Paging();
     filter['search_string'] = '';
     this.filter( filter );
   }

@@ -30,7 +30,7 @@ export class BlogComponent implements
 
   isLoading?: boolean = false;
 
-  selectedCategory: number = 0;
+  selectedCategory = 0;
 
   paginator!: PaginatorState;
   grouping!: GroupingState;
@@ -63,7 +63,7 @@ export class BlogComponent implements
 
   // filtration
   filterForm() {
-    let filter: Paging = new Paging();
+    const filter: Paging = new Paging();
     filter['category_id'] = this.selectedCategory;
     filter['search_string'] = '';
     this.filter( filter );
@@ -74,7 +74,7 @@ export class BlogComponent implements
   }  
 
   routeToPage(path?: string) {
-    const translatedPath = this.localize.translateRoute(`/blog/${path}`);
+    const translatedPath = this.localize.translateRoute(`${path}`);
 
     this.router.navigate([translatedPath]).then(() => {
       // console.log(`After navigation I am on: ${translatedPath}`)

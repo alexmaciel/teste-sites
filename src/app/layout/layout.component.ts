@@ -12,10 +12,10 @@ export class LayoutComponent {
   // page
   pageContainerCSSClasses!: string;
   // header
-  appHeaderDefaultClass: string = '';  
+  appHeaderDefaultClass = '';  
   appHeaderDefaultContainer: 'fixed' | 'fluid' = 'fluid';
-  appHeaderDefaultContainerClass: string = '';  
-  headerContainerCssClass: string = '';
+  appHeaderDefaultContainerClass = '';  
+  headerContainerCssClass = '';
   // content
   appContentContainer?: 'fixed' | 'fluid' = 'fluid';
   appContentContainerClass!: string;
@@ -23,7 +23,7 @@ export class LayoutComponent {
   contentContainerCSSClass!: string;  
   // footer
   appFooterContainer?: 'fixed' | 'fluid' = 'fluid';
-  appFooterContainerCSSClass: string = '';
+  appFooterContainerCSSClass = '';
 
 
   constructor(
@@ -33,7 +33,7 @@ export class LayoutComponent {
     this.initService.initProps();
     // define layout type and load layout
     this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
+      if (event.constructor.name.endsWith('End')) {
         this.initService.initProps();
       }
     });    

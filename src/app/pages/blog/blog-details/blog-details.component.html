@@ -2,7 +2,7 @@
     class="page-title bg-secondary">    
     <div class="app-content-container">                  
         <div class="container-xxl">
-            <div class="d-flex align-items-center justify-content-start ms-lg-16">
+            <div class="d-flex align-items-center justify-content-start my-4 mx-14">
                 <div class="d-flex align-items-center justify-content-start z-index-2">
                     <div class="d-flex flex-row">
                         @if(post) {
@@ -16,7 +16,7 @@
         </div>
     </div>
 </section>
-<section class="pt-0 mt-lg-n12">
+<section class="pt-0 mt-n12">
     <div class="app-content-container">
         <div class="container-xxl">
             <div class="blog-cards">
@@ -28,7 +28,7 @@
                                     <div class="mb-16">
                                         <div class="mb-8 my-1">
                                             <div class="d-flex flex-stack align-items-center mb-6 w-100">
-                                                <div class="me-8">
+                                                <div class="me-4 me-lg-8">
                                                     <span
                                                         [inlineSVG]="'./assets/img/time.svg'" 
                                                         class="svg-icon svg-icon-secondary svg-icon-5 me-1">
@@ -36,17 +36,19 @@
                                                     <span class="fw-bold text-gray-500 me-4">
                                                         {{ post.date | datelocale }}
                                                     </span>
-                                                    <span
-                                                        [inlineSVG]="'./assets/img/bookmark.svg'" 
-                                                        class="svg-icon svg-icon-secondary svg-icon-5 me-1">
-                                                    </span>                                                       
-                                                    @for (cat of categories.items$ | async; track cat.id) {
-                                                        <div class="badge badge-square badge-light-primary me-2">
-                                                            <span>
-                                                                {{ cat.name }}
-                                                            </span>
-                                                        </div>
-                                                    }
+                                                    <div>
+                                                        <span
+                                                            [inlineSVG]="'./assets/img/bookmark.svg'" 
+                                                            class="svg-icon svg-icon-secondary svg-icon-5 me-1">
+                                                        </span>                                                       
+                                                        @for (cat of categories.items$ | async; track cat.id) {
+                                                            <div class="badge badge-square badge-light-primary me-2">
+                                                                <span>
+                                                                    {{ cat.name }}
+                                                                </span>
+                                                            </div>
+                                                        }
+                                                    </div>
                                                 </div>
                                                 <div class="text-end">
                                                     <span class="fw-semibold text-muted fs-7 ps-2">
@@ -62,7 +64,7 @@
                                                         <swiper-container #swiper class="slider" init="false">   
                                                             @for (pic of post.pictures; track pic.id) {
                                                                 <swiper-slide class="slider-slide">                                                                                                                 
-                                                                    <div class="post-image h-450px">
+                                                                    <div class="post-image h-250px h-lg-450px">
                                                                         <div class="container-image rounded-4">
                                                                             <img 
                                                                                 [ngSrc]="pic.file_name" ngSrcset="100w, 1000w" sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, calc(1600px / 3)" placeholder="40" loading="lazy" fetchpriority="auto" fill

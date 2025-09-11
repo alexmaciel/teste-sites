@@ -73,29 +73,29 @@ export class SeoService {
     this.setAuthor(data.author);
   }
 
-  public setKeywords(keywords: string = ''): void {
-    if (Boolean(keywords)) {
+  public setKeywords(keywords = ''): void {
+    if (keywords) {
       this.metaService.updateTag({ name: 'keywords', content: keywords });
     } else {
       this.metaService.removeTag(`name='keywords'`);
     }
   }
 
-  public setSection(section: string = ''): void {
-    if (Boolean(section)) {
+  public setSection(section = ''): void {
+    if (section) {
       this.metaService.updateTag({ name: 'article:section', content: section });
     } else {
       this.metaService.removeTag(`name='article:section'`);
     }
   }
 
-  public setPageTitle(title: string = ''): void {
+  public setPageTitle(title = ''): void {
     if (title) {
       this.titleService.setTitle(title + app_separate + this.company_name);
     }
   }  
 
-  public setTitle(title: string = ''): void {
+  public setTitle(title = ''): void {
     this.titleService.setTitle(title);
     if (title && title.length) {
       this.metaService.updateTag({ name: 'twitter:title', content: title });
@@ -228,8 +228,8 @@ export class SeoService {
     }
   }
 
-  public setTwitterSiteCreator(site: string = ''): void {
-    if (Boolean(site)) {
+  public setTwitterSiteCreator(site = ''): void {
+    if (site) {
       this.metaService.updateTag({ name: 'twitter:site', content: site });
       this.metaService.updateTag({ name: 'twitter:creator', content: site });
     } else {
@@ -238,8 +238,8 @@ export class SeoService {
     }
   }
 
-  public setTwitterCard(card: string = ''): void {
-    if (Boolean(card)) {
+  public setTwitterCard(card = ''): void {
+    if (card) {
       this.metaService.updateTag({ name: 'twitter:card', content: card });
     } else {
       this.metaService.removeTag(`name='twitter:card'`);
@@ -247,7 +247,7 @@ export class SeoService {
   }
 
   public setFbAppId(appId: string): void {
-    if (Boolean(appId)) {
+    if (appId) {
       this.metaService.updateTag({ property: 'fb:app_id', content: appId });
     } else {
       this.metaService.removeTag(`property='fb:app_id'`);
@@ -255,7 +255,7 @@ export class SeoService {
   }
 
   public setMetaTag(metaTag: SeoMetaTag): void {
-    if (Boolean(metaTag.value)) {
+    if (metaTag.value) {
       const metaTagObject: any = {
         [metaTag.attr]: metaTag.attrValue,
         content: metaTag.value,

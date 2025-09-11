@@ -30,7 +30,7 @@ export class ElementAnimateUtil {
     const change = to - from
 
     function loop(timestamp: number) {
-      var time = (timestamp || +new Date()) - start
+      const time = (timestamp || +new Date()) - start
 
       if (time >= 0) {
         update(easings.linear(time, from, change, duration))
@@ -86,7 +86,7 @@ export class ElementAnimateUtil {
     ElementStyleUtil.set(element, 'animation-duration', value)
   }
 
-  public static scrollTo(element: HTMLElement | null, offset: number, duration: number = 500) {
+  public static scrollTo(element: HTMLElement | null, offset: number, duration = 500) {
     let targetPos = element ? getElementOffset(element).top : 0
     let scrollPos =
       window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0

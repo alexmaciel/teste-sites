@@ -1,4 +1,4 @@
-import { Component, Inject, NgZone, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, NgZone, PLATFORM_ID, OnInit, OnDestroy } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 // amCharts imports
@@ -13,7 +13,7 @@ import am5geodata_worldLow from "@amcharts/amcharts5-geodata/worldLow";
   selector: 'app-location',
   templateUrl: './location.component.html'
 })
-export class LocationComponent {
+export class LocationComponent implements OnInit, OnDestroy {
   private root!: am5.Root;
 
   countries = [
@@ -24,7 +24,7 @@ export class LocationComponent {
     { id: "ID", polygonSettings: { fill: am5.color(0xE66B23) } }
   ];
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object, private zone: NgZone) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: object, private zone: NgZone) {}
 
   // Run the function only in the browser
   browserOnly(f: () => void) {
@@ -42,14 +42,14 @@ export class LocationComponent {
     );   
     // Chart code goes in here
     this.browserOnly(() => {
-      let root = am5.Root.new("chartdiv");
+      const root = am5.Root.new("chartdiv");
       
       this.root = root;
 
       root.setThemes([am5themes_Animated.new(root)]);
 
       // Criar o mapa
-      let chart = root.container.children.push(
+      const chart = root.container.children.push(
         am5map.MapChart.new(root, {
           panX: "none",
           panY: "none",
@@ -61,7 +61,7 @@ export class LocationComponent {
       );
 
       // Criar a série de polígonos (países)
-      let polygonSeries = chart.series.push(
+      const polygonSeries = chart.series.push(
         am5map.MapPolygonSeries.new(root, {
           geoJSON: am5geodata_worldLow,
           exclude: ["AQ"], // Exclui a Antártida

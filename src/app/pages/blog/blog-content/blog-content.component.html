@@ -2,7 +2,7 @@
     class="page-title bg-secondary">    
     <div class="app-content-container">                  
         <div class="container-xxl">
-            <div class="d-flex align-items-center justify-content-start ms-lg-16">
+            <div class="d-flex align-items-center justify-content-start my-4 mx-14">
                 <div class="d-flex align-items-center justify-content-start z-index-2">
                     <div class="d-flex flex-column flex-wrap w-lg-75">
                         <h1 class="fs-2x fw-bold text-white">
@@ -14,7 +14,7 @@
         </div>
     </div>
 </section>
-<section class="pt-0 mt-lg-n12">
+<section class="pt-0 mt-n12">
     <div class="app-content-container">
         <div class="container-xxl">
             <div class="blog-cards">
@@ -25,8 +25,13 @@
                                 <div class="section-head mb-8">
                                     <span [translate]="'header.blog'"></span>
                                 </div>  
-                                <div class="section-sort ms-auto">
-                                    <app-blog-sort [posts]="posts"></app-blog-sort>
+                                <div class="d-flex align-items-center ms-auto">
+                                    <div class="section-filter">
+                                        <app-blog-filter [posts]="posts"></app-blog-filter>
+                                    </div>
+                                    <div class="section-sort ms-2 d-block d-lg-none">
+                                        <app-blog-sort [posts]="posts"></app-blog-sort>
+                                    </div>
                                 </div>
                             </div>
                         </div>                             
@@ -34,8 +39,10 @@
                             <div class="flex-lg-row-fluid me-xl-15">
                                 <app-blog-list #posts></app-blog-list>
                             </div>
-                            <div class="flex-column flex-lg-row-auto w-100 mw-lg-250px mw-xxl-300px ms-auto">
-                                <app-blog-filter [posts]="posts"></app-blog-filter>
+                            <div class="d-none d-lg-flex flex-column flex-lg-row-auto w-100 mw-lg-250px mw-xxl-300px ms-auto">
+                                <div class="card-rounded bg-light px-5 py-10 mb-10">
+                                    <app-blog-categories [posts]="posts"></app-blog-categories>
+                                </div>
                             </div>
                         </div>
                     </div>

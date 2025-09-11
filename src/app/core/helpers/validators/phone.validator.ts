@@ -1,45 +1,34 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import libphonenumber, { PhoneNumberFormat } from 'google-libphonenumber';
 
-//const phoneUtil = PhoneNumberUtil.getInstance();
 
 export class PhoneValidator {
   // Inspired on: https://github.com/yuyang041060120/ng2-validation/blob/master/src/equal-to/validator.ts
-  static validCountryPhone = (countryControl: AbstractControl): ValidatorFn => {
-    let subscribe: boolean = false;
+  static validCountryPhone(countryControl: AbstractControl): ValidatorFn {
+    let subscribed = false;
+    const phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
 
-    return (phoneControl: AbstractControl): {[key: string]: boolean} => {
-      if (!subscribe) {
-        subscribe = true;
+    return (phoneControl: AbstractControl): ValidationErrors | null => {
+      if (!subscribed) {
+        subscribed = true;
         countryControl.valueChanges.subscribe(() => {
           phoneControl.updateValueAndValidity();
         });
       }
 
-      if(phoneControl.value !== ""){
-        try{
-            const phoneUtil = libphonenumber.PhoneNumberUtil.getInstance();
-            // Parse number with country code and keep raw input.
-            let phoneNumber = "" + phoneControl.value + "",
-                region = countryControl.value.iso,
-                number = phoneUtil.parse(phoneNumber, region),
-                isValidNumber = phoneUtil.isValidNumber(number);
-
-            if(isValidNumber){
-                return { invalidPhone: true  };
-            }
-          }catch(e){
-              // console.log(e);
-              return {
-                validCountryPhone: true
-              };
-          }
-
-          return {
-            validCountryPhone: true
-        };
+      if (!phoneControl.value) {
+        return null; // vazio ainda não valida
       }
-      return {};
+
+      try {
+        const region = countryControl.value; // se for só o ISO
+        const number = phoneUtil.parseAndKeepRawInput(phoneControl.value, region);
+        const isValid = phoneUtil.isValidNumberForRegion(number, region);
+
+        return isValid ? null : { invalidPhone: true };
+      } catch (e) {
+        return { invalidPhone: true };
+      }
     };
   };  
   

@@ -640,6 +640,36 @@ class Clients extends ClientsController
         }        
     }  
 
+    /**
+     * Countries
+     *
+     * @return void
+     */
+    public function countries()
+    {
+        $countries = get_all_countries();
+
+        $data = array();
+		if(!empty($countries)){
+			foreach($countries as $row){ 
+
+                $data[] = array(
+                    'name'     => $row['short_name'],
+                    'iso'      => $row['iso2'],
+                    'code'      => $row['calling_code'],
+                    'value'    => (int) $row['country_id'],
+                );
+            }
+        }        
+        
+        $this->data($data);
+    }
+
+    /**
+     * Settings
+     *
+     * @return void
+     */
     public function settings()
     {
         $whatsapp_chat_clients_area = get_option('whatsapp_chat_clients_area');

@@ -31,8 +31,8 @@ import { TranslationService } from '../../../core';
 })
 export class ContentComponent {
   @Input() appContentContainer?: 'fixed' | 'fluid';
-  @Input() appContentContainerClass: string = '';
-  @Input() contentContainerCSSClass: string = '';
+  @Input() appContentContainerClass = '';
+  @Input() contentContainerCSSClass = '';
 
   constructor(
     // Services

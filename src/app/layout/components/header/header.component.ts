@@ -11,10 +11,10 @@ import { LanguageService, TranslationService } from '../../../core';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @Input() appHeaderDefaultContainer?: 'fixed' | 'fluid';
-  @Input() appHeaderDefaultContainerClass: string = '';
+  @Input() appHeaderDefaultContainerClass = '';
   
   appHeaderDefaultFixedDesktop?: boolean = true;
-  currentLang: string = '';
+  currentLang = '';
 
   private unsubscribe: Subscription[] = [];
 
@@ -54,7 +54,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }  
     
   calculateMenuItemCssClass(url: string): string {
-    let path: any = this.localize.translateRoute(url)
+    const path: any = this.localize.translateRoute(url)
     return checkIsActive(this.router.url, path) ? 'active' : '';
   }  
 }

@@ -1,0 +1,135 @@
+<div class="app-aside-content">
+	<div class="d-flex justify-content-end text-end position-absolute w-100">
+		<div class="d-flex flex-wrap align-items-center m-10">               
+			<div class="d-flex align-items-stretch flex-shrink-0" data-close="true">  
+				<div 
+					class="btn btn-icon burger-icon">
+					<span></span>
+					<span></span>
+				</div>   
+			</div>     
+		</div>   
+	</div>  	
+	<div class="app-aside-menu flex-column-fluid">
+		<div>
+			<div class="app-aside-body">
+				<div class="app-aside-container">
+					<div class="app-aside-grid">
+						<div class="app-aside-grid-col left">
+							<div class="app-aside-title">
+								{{ 'header.follow' | translate }}
+							</div>
+							<div
+								class="
+									menu
+									menu-column
+									fs-5 mb-6">  
+								<div
+									*ngFor="let social of socialService.items$ | async"
+									class="menu-item cursor-pointer">   
+									<a [href]="social.link" target="_blank" class="menu-link without-sub ps-0">
+										<em>
+											<span [title]="social.name">{{ social.name }}</span>
+										</em>										
+										<span class="menu-title">
+											{{ social.name }}
+										</span>
+									</a> 
+								</div>   
+							</div>						
+						</div>					
+						<div class="app-aside-grid-col right">
+							<div class="app-aside-title">
+								{{ 'header.menu' | translate }}
+							</div>						
+							<div
+								class="
+								menu
+								menu-column
+								fw-bold
+								fs-2x"> 
+								<div class="menu-item me-6 me-lg-12">
+									<a class="menu-link without-sub py-1 ps-0" [routerLink]="['/technology'] | localize" routerLinkActive="active" [ngClass]="calculateMenuItemCssClass('/technology')">
+										<em>
+											<span [title]="'nav.technologyNav' | translate">{{ 'nav.technologyNav' | translate }}</span>
+										</em>										
+										<span class="menu-title">
+											{{ 'nav.technologyNav' | translate }}
+										</span>
+									</a>
+								</div>								
+								<div class="menu-item me-6 me-lg-12">
+									<a class="menu-link without-sub py-1 ps-0" [routerLink]="['/company'] | localize" routerLinkActive="active" [ngClass]="calculateMenuItemCssClass('/company')">
+										<em>
+											<span [title]="'nav.companyNav' | translate">{{ 'nav.companyNav' | translate }}</span>
+										</em>										
+										<span class="menu-title">
+											{{ 'nav.companyNav' | translate }}
+										</span>
+									</a>
+								</div>																
+								<div class="menu-item me-6 me-lg-12">
+									<a class="menu-link without-sub py-1 ps-0" [routerLink]="['/team'] | localize" routerLinkActive="active" [ngClass]="calculateMenuItemCssClass('/team')">
+										<em>
+											<span [title]="'nav.teamNav' | translate">{{ 'nav.teamNav' | translate }}</span>
+										</em>										
+										<span class="menu-title">
+											{{ 'nav.teamNav' | translate }}
+										</span>
+									</a>
+								</div>	
+								<div class="menu-item me-6 me-lg-12">
+									<a class="menu-link without-sub py-1 ps-0" [routerLink]="['/blog'] | localize" routerLinkActive="active" [ngClass]="calculateMenuItemCssClass('/blog')">
+										<em>
+											<span [title]="'nav.blogNav' | translate">{{ 'nav.blogNav' | translate }}</span>
+										</em>										
+										<span class="menu-title">
+											{{ 'nav.blogNav' | translate }}
+										</span>
+									</a>
+								</div>																			
+								<div class="menu-item me-6 me-lg-12">
+									<a class="menu-link without-sub py-1 ps-0" [routerLink]="['/contact'] | localize" routerLinkActive="active" [ngClass]="calculateMenuItemCssClass('/contatos')">
+										<em>
+											<span [title]="'nav.contactNav' | translate">{{ 'nav.contactNav' | translate }}</span>
+										</em>										
+										<span class="menu-title">
+											{{ 'nav.contactNav' | translate }}
+										</span>
+									</a>
+								</div>          
+							</div>  
+						</div> 
+					</div>  
+				</div>
+			</div>
+		</div>
+		<div class="app-aside-footer">
+			<div class="app-aside-container">
+				<div class="app-aside-title">
+					Info
+				</div>		
+				@for(lang of languageService.items$ | async; track lang.name) {
+					<div class="app-aside-menu-language">
+						<a 
+							class="fs-6"
+							(click)="switchLang(lang.language_cod)"
+							[ngClass]="{'active': currentLang === lang.language_cod}">
+							{{ lang.name }}
+						</a>
+					</div>					
+				}
+
+				<!--
+					<ng-container *ngIf="settings.settings$ | async as set">
+						<div class="fs-6 mb-3">{{set.company_phonenumber}}</div>
+						<div class="app-aside-menu-mail">
+							<a [href]="set.company_email" class="fs-6">{{set.company_email}}</a>
+						</div>
+					</ng-container>
+				-->			
+			</div>
+		</div>
+	</div>
+</div>
+<div class="app-aside-backdrop"></div>

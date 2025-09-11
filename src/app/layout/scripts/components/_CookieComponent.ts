@@ -8,7 +8,7 @@ export class CookieComponent {
    * @returns string | null
    */
   public static get(name: string): string | undefined {
-    let matches = document.cookie.match(
+    const matches = document.cookie.match(
       new RegExp('(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)')
     )
     return matches ? decodeURIComponent(matches[1]) : undefined
@@ -36,9 +36,9 @@ export class CookieComponent {
 
     let updatedCookie = encodeURIComponent(name) + '=' + encodeURIComponent(value)
 
-    for (let optionKey in options) {
+    for (const optionKey in options) {
       updatedCookie += '; ' + optionKey
-      let optionValue = options[optionKey]
+      const optionValue = options[optionKey]
       if (optionValue !== true) {
         updatedCookie += '=' + optionValue
       }

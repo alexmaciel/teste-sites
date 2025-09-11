@@ -1,10 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import { 
   TechnologyService,
   TechnologyItemService
 } from '../../../core';
+
+import { VideosComponent } from './videos/videos.component';
 
 @Component({
   selector: 'app-technology',
@@ -15,6 +19,7 @@ export class TechnologyComponent implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   constructor(
+    private modal: NgbModal,
     // Services
     public technology: TechnologyService,
     public items: TechnologyItemService
@@ -37,6 +42,10 @@ export class TechnologyComponent implements OnInit, OnDestroy {
     this.subscriptions.push(sb);       
   }   
   
+  openVideo() {
+    const modalRef = this.modal.open(VideosComponent, { size: 'xl', centered: true, modalDialogClass: 'modal-custom' });
+  }  
+
   ngOnDestroy(): void {
     this.subscriptions.forEach((sb) => sb.unsubscribe());
   }  

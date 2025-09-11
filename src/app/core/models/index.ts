@@ -11,9 +11,10 @@ export { Items } from './items.model';
 export { Goals } from './goals.model';
 export { Partners } from './partners.model';
 export { Technology } from './technology.model';
-export { Team } from './team.model';
 export { Category } from './category.model';
+export { Team } from './team.model';
 
+export { Countries } from './countries.model';
+export { Settings } from './settings.model';
 export { Social } from './social.model';
 export { Email } from './email.model';
-export { Settings } from './settings.model';

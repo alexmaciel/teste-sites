@@ -9,25 +9,17 @@ export interface EventMeta {
 }
 
 export class EventHandlerUtil {
-  static store: {
-    [name: string]: {
-      [handlerId: string]: EventMeta
-    }
-  } = {}
+  static store: Record<string, Record<string, EventMeta>> = {}
 
   private static setEventMetasByName(
     name: string,
-    handlers: {
-      [handlerId: string]: EventMeta
-    }
+    handlers: Record<string, EventMeta>
   ): void {
     EventHandlerUtil.store[name] = handlers
   }
 
   private static getEventMetaByName(name: string):
-    | {
-        [handlerId: string]: EventMeta
-      }
+    | Record<string, EventMeta>
     | undefined {
     return EventHandlerUtil.store[name]
   }
@@ -67,7 +59,7 @@ export class EventHandlerUtil {
     element: HTMLElement,
     name: string,
     callback: Function,
-    one: boolean = false
+    one = false
   ): string {
     const handlerId = getUniqueIdWithPrefix('event')
     const data = DataUtil.get(element, name)

@@ -1,0 +1,17 @@
+//
+// Modal
+//
+
+.modal-custom {
+    .modal-content {
+        background-color: transparent;
+        box-shadow: none;
+        border-radius: none;
+        color: initial;
+        border-color: transparent;
+    }
+}
+
+.modal-rounded {
+	border-radius: $modal-content-border-radius !important;	
+}

@@ -39,15 +39,20 @@
 
     // Menu Link
     .menu-link {
-        display: flex;
-        align-items: center;
-        position: relative;
-        padding: 0;
-        flex: 0 0 100%;
-        padding: $menu-link-padding-y $menu-link-padding-x;
+        display: inline-flex;
         transition: none;
         outline: none;
         cursor: pointer;
+        padding: $menu-link-padding-y $menu-link-padding-x;
+
+        &.link {
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 0;
+            flex: 0 0 100%;
+            padding: $menu-link-padding-y $menu-link-padding-x;
+        }
 
         &.link:after, 
         &.link:before {

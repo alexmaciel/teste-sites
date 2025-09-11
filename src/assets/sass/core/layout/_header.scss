@@ -94,34 +94,13 @@
         }
 
         .burger-icon {
-            @include  burger-icon-theme(get($burger-icon-config, theme, dark, color), get($burger-icon-config, theme, hover), get($burger-icon-config, theme, active));
+            @include  burger-icon-theme(get($burger-icon-config, theme, default), get($burger-icon-config, theme, hover), get($burger-icon-config, theme, active));
         }	               
     }
-		
-	[data-mv-app-aside-minimize="on"] & {
-        .app-header-menu {
-            .menu {
-                .menu-item {
-                    @include menu-link-default-state( 
-                        $title-color: var(--#{$prefix}text-dark), 
-                        $icon-color: var(--#{$prefix}text-dark), 
-                        $bullet-color: var(--#{$prefix}text-dark), 
-                        $arrow-color: var(--#{$prefix}text-dark),
-                        $bg-color: null
-                    );
-                }   
-            }
-        }
-
-		.burger-icon {
-			@include  burger-icon-active($burger-icon-config);
-            @include  burger-icon-theme(get($burger-icon-config, theme, dark, color), get($burger-icon-config, theme, hover), get($burger-icon-config, theme, active));
-		}  		
-	}
 
 	[data-mv-app-aside-minimize="on"][data-mv-app-header-color="color"] & {
 		.burger-icon {
-            @include  burger-icon-theme(get($burger-icon-config, theme, dark, color), get($burger-icon-config, theme, hover), get($burger-icon-config, theme, active));
+            @include  burger-icon-theme(get($burger-icon-config, theme, default), get($burger-icon-config, theme, hover), get($burger-icon-config, theme, active));
 		}  		
 	}	    
 }
@@ -209,7 +188,7 @@
             }    
 
             .burger-icon {
-                @include  burger-icon-theme(get($burger-icon-config, theme, dark, color), get($burger-icon-config, theme, hover), get($burger-icon-config, theme, active));
+                @include  burger-icon-theme(get($burger-icon-config, theme, default), get($burger-icon-config, theme, hover), get($burger-icon-config, theme, active));
             }              
             
             .menu {
@@ -258,17 +237,16 @@
         @include property( z-index, $app-header-fixed-z-index-mobile);
 
         height: var(--#{$prefix}app-header-height);  
-        align-items: stretch;
 
         // Integration
-        .app-header-menu {   
+        .app-header-menu,
+        .app-header-language {   
             display: none!important;
         }   
         
         .svg-icon {
-            color: var(--#{$prefix}text-primary-light);
-            @include svg-icon-size($font-size-base * 9.5);
-            width: 324px;
+            color: var(--#{$prefix}text-secondary);
+            @include svg-icon-size($font-size-base * 7.5);
         }  
 
         [data-mv-app-header-sticky="true"] & {
@@ -282,14 +260,13 @@
             transition: $app-header-sticky-transition;  
             
             .burger-icon {
-                @include  burger-icon-theme(get($burger-icon-config, theme, dark, color), get($burger-icon-config, theme, hover), get($burger-icon-config, theme, active));
+                @include  burger-icon-theme(get($burger-icon-config, theme, default), get($burger-icon-config, theme, hover), get($burger-icon-config, theme, active));
             }   
             
             .svg-icon {
                 line-height: 1;
-                //color: var(--#{$prefix}text-secondary);
-                @include svg-icon-size($font-size-base * 8);
-                width: 284px;
+                color: var(--#{$prefix}text-secondary);
+                @include svg-icon-size($font-size-base * 7);
             }                  
         }         
     }

@@ -103,7 +103,7 @@ class ScrollComponent {
 
     // Wrappers
     if (wrappers !== null) {
-      var elements = document.querySelectorAll(wrappers as string)
+      const elements = document.querySelectorAll(wrappers as string)
       if (elements && elements.length > 0) {
         for (let i = 0, len = elements.length; i < len; i++) {
           const element = elements[i] as HTMLElement
@@ -154,8 +154,8 @@ class ScrollComponent {
   }
 
   private setupHeight = () => {
-    let height = this.getHeight()
-    let heightType = this.getHeightType() as string
+    const height = this.getHeight()
+    const heightType = this.getHeightType() as string
 
     // Set height
     if (height !== null && height.length > 0) {
@@ -169,7 +169,7 @@ class ScrollComponent {
     if (this.getOption('save-state') === true && this.id) {
       const cookie = CookieComponent.get(this.id + 'st')
       if (cookie) {
-        var pos = parseInt(cookie)
+        const pos = parseInt(cookie)
 
         if (pos > 0) {
           this.element.scrollTop = pos
@@ -264,9 +264,9 @@ class ScrollComponent {
     }
   }
 
-  public static destroyAll(attr: string = '[data-kt-scroll="true"]') {}
+  public static destroyAll(attr = '[data-kt-scroll="true"]') {}
 
-  public static bootstrap(attr: string = '[data-kt-scroll="true"]') {
+  public static bootstrap(attr = '[data-kt-scroll="true"]') {
     ScrollComponent.createInstances(attr)
     ScrollComponent.resize()
   }
@@ -282,7 +282,7 @@ class ScrollComponent {
     return scroll
   }
 
-  public static reinitialization(attr: string = '[data-kt-scroll="true"]') {
+  public static reinitialization(attr = '[data-kt-scroll="true"]') {
     ScrollComponent.createInstances(attr)
   }
 

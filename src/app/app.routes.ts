@@ -9,8 +9,6 @@ import { LocalizeRouterHttpLoader } from '@gilsdav/ngx-translate-router-http-loa
 import { 
     CustomReuseStrategy,
     TranslateTitleStrategy,
-    TranslationService,
-    SeoService, 
 } from './core';
 
 
@@ -56,12 +54,11 @@ export const routes: Routes = [
         })),
         { 
             provide: TitleStrategy, useClass: TranslateTitleStrategy,
+
         },     
         {
             provide: RouteReuseStrategy, useClass: CustomReuseStrategy
         },
-        TranslationService,
-        SeoService
     ],
     exports: [RouterModule, LocalizeRouterModule]
 })

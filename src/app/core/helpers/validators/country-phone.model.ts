@@ -6,11 +6,13 @@ export class CountryPhone {
   code: string;
   sample_phone: string;
 
-  constructor (iso: string, name: string) {
+  constructor (iso: string, name: string, code: string) {
     this.iso = iso;
     this.name = name;
+    this.code = code;
 
-    let phoneUtil = libphonenumber.PhoneNumberUtil.getInstance(),
+
+    const phoneUtil = libphonenumber.PhoneNumberUtil.getInstance(),
         PNF = libphonenumber.PhoneNumberFormat,
         PNT = libphonenumber.PhoneNumberType,
         country_example_number = phoneUtil.getExampleNumberForType(this.iso, PNT.MOBILE),
@@ -19,7 +21,7 @@ export class CountryPhone {
         //    - FIXED_LINE
         //    - MOBILE
         //    - For more types please refer to google libphonenumber repo (https://github.com/googlei18n/libphonenumber/blob/f9e9424769964ce1970c6ed2bd60b25b976dfe6f/javascript/i18n/phonenumbers/phonenumberutil.js#L913)
-        example_number_formatted = phoneUtil.format(country_example_number, PNF.NATIONAL);
+        example_number_formatted = phoneUtil.format(country_example_number, PNF.E164);
         // We need to define how are we going to format the phone number
         // You can choose between many formats including:
         //    - NATIONAL

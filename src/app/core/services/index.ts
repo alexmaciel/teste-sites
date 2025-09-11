@@ -22,4 +22,5 @@ export * from './translation.service';
 
 export * from './social.service';
 export * from './sendmail.service';
+export * from './country.service';
 export * from './setting.service';

@@ -18,7 +18,7 @@ export class TruncatetextPipe implements PipeTransform {
     //.. now nibble ends till correct length
     while (truncatedText.length > length - elipses.length) {
     
-      let lastSpace = truncatedText.lastIndexOf(" ");
+      const lastSpace = truncatedText.lastIndexOf(" ");
       if(lastSpace === -1) break;
       truncatedText = truncatedText.slice(0, lastSpace).replace(/[!,.?;:]$/, '');
     };

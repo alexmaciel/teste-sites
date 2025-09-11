@@ -41,7 +41,7 @@ function toJSON(value: string | JSON): JSON | undefined {
     .split('')
     .map((el) => (el !== "'" ? el : '"'))
     .join('')
-  var jsonStr = result.replace(/(\w+:)|(\w+ :)/g, function (matched) {
+  const jsonStr = result.replace(/(\w+:)|(\w+ :)/g, function (matched) {
     return '"' + matched.substring(0, matched.length - 1) + '":'
   })
   try {

@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { catchError, Observable, of, Subscription } from 'rxjs';
+import { catchError, filter, Observable, of, Subscription } from 'rxjs';
+
 
 import {
   // Validators
@@ -9,10 +10,20 @@ import {
 } from '../../core/helpers/validators';
 
 import { 
+  TranslationService,
   SettingService,
   SendmailService,
+  CountryService,
   SocialService,
+  Countries,
 } from '../../core';
+import { Router } from '@angular/router';
+
+const LANG_TO_COUNTRY: Record<string, string> = {
+  'pt': 'BR',
+  'en': 'US',
+  'es': 'UY'
+};
 
 @Component({
   selector: 'app-contact',
@@ -22,37 +33,47 @@ export class ContactComponent implements OnInit, OnDestroy {
 
   isLoading$?: Observable<boolean>;
 
-  selectedTerms: boolean = true;
-  success: boolean = false;
+  selectedTerms = true;
+  success = false;
 
   formGroup!: FormGroup;
   countryPhoneGroup!: FormGroup;
 
-  countriesPhone!: Array<CountryPhone>;
+  countriesPhone: Countries[] = [];
   selectedCountry!: any;
 
   private unsubscribe: Subscription[] = [];
 
   constructor(
     private fb: FormBuilder,
+    private translation: TranslationService,
+    private router: Router,
     // Services
-    private send: SendmailService,
+    public countries: CountryService,  
     public settings: SettingService,  
     public socials: SocialService,
+    // Send Email
+    private send: SendmailService,
   ) { 
     if (typeof document !== 'undefined') {
       document.body.setAttribute('data-mv-app-header-color', 'color');
     }      
   }
-    
+  
   ngOnInit(): void {
+    this.loadCountries();
     this.loadSocial();
-    //  We just use a few random countries, however, you can use the countries you need by just adding them to this list.
-    // also you can use a library to get all the countries from the world.
-    this.countriesPhone = [
-      new CountryPhone('BR', 'Brasil'),
-    ];  
-    this.selectedCountry = this.countriesPhone[0];    
+ 
+    const sb = this.router.events.subscribe((event) => {
+      if (event.constructor.name.endsWith('End')) {
+        const newIso = LANG_TO_COUNTRY[this.translation.getSelectedLanguage()] ?? 'UY'; // fallback
+
+        this.selectedCountry = this.countriesPhone.filter(c => c.iso === newIso)[0];
+
+        console.log(this.selectedCountry)
+      }
+    });
+    this.unsubscribe.push(sb);
     this.loadForm();
   }
 
@@ -61,19 +82,40 @@ export class ContactComponent implements OnInit, OnDestroy {
     this.unsubscribe.push(sb) 
   }
 
+  loadCountries() {
+    const userLang = this.translation.currentLanguageValue; // idioma ativo do ngx-translate
+    const defaultIso = LANG_TO_COUNTRY[this.translation.getSelectedLanguage()] ?? 'UY'; // fallback
+
+    const sb = this.countries.getCountries().subscribe((res) => {
+      this.countriesPhone = res;
+      //this.selectedCountry = this.countriesPhone[0];
+    });  
+    this.unsubscribe.push(sb)      
+  }
+
   loadForm() {
-    let country = new FormControl(this.selectedCountry, Validators.required);
-    let phonenumber = new FormControl('', Validators.compose([
+    //  We just use a few random countries, however, you can use the countries you need by just adding them to this list.
+    // also you can use a library to get all the countries from the world.    
+    const defaultIso = LANG_TO_COUNTRY[this.translation.getSelectedLanguage()]; // fallback    
+    this.selectedCountry = this.countriesPhone.filter(c => c.iso === defaultIso)[0];
+
+    const country = new FormControl(this.selectedCountry?.iso, Validators.required);
+    const phonenumber = new FormControl(this.selectedCountry?.code, Validators.compose([
       Validators.required,
-      PhoneValidator.globalPhoneValidator()
+      PhoneValidator.validCountryPhone(country)
     ]));
     this.countryPhoneGroup = new FormGroup({
       country: country,
       phonenumber: phonenumber
     });  
 
-    console.log(PhoneValidator)
-        
+    country.valueChanges.subscribe((iso) => {
+      this.selectedCountry = this.countriesPhone.find(c => c.iso === iso);
+      if (this.selectedCountry) {
+        phonenumber.setValue(this.selectedCountry.code, { emitEvent: false });
+      }
+    }); 
+
     this.formGroup = this.fb.group({
       subject: ["", Validators.compose([
         Validators.required
@@ -112,7 +154,7 @@ export class ContactComponent implements OnInit, OnDestroy {
     formData.append('firstname', this.formGroup.get('firstname')?.value);
     formData.append('lastname', this.formGroup.get('lastname')?.value);
     formData.append('email', this.formGroup.get('email')?.value);
-    formData.append('phone', this.formGroup.get('phone')?.value);
+    formData.append('phone', this.formGroup.get('country_phone')?.get('phonenumber')?.value);
     formData.append('message', this.formGroup.get('message')?.value);
 
 

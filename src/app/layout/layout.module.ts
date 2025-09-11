@@ -10,6 +10,9 @@ import { ScriptsInitComponent } from './scripts-init/scripts-init.component';
 import { ContentComponent } from './components/content/content.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AsideComponent } from './components/aside/aside.component';
+// Directives
+import { ToggleMenuDirective } from './directives/toggle-menu.directive';
 
 import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
@@ -23,6 +26,9 @@ import { NgxSwiperModule } from "../shared";
     HeaderComponent,
     ContentComponent,
     FooterComponent,
+    AsideComponent,
+    // Directives
+    ToggleMenuDirective,
     // Script
     ScriptsInitComponent
   ],

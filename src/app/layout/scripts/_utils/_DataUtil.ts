@@ -1,5 +1,5 @@
 export class DataUtil {
-  static store: Map<HTMLElement, Map<string, unknown>> = new Map()
+  static store = new Map<HTMLElement, Map<string, unknown>>()
 
   public static set(instance: HTMLElement | undefined, key: string, data: unknown): void {
     if (!instance) {

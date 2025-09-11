@@ -43,7 +43,7 @@ $app-wrapper-bg-color-dark: null !default;
 $app-content-padding-y: 30px !default;
 $app-content-padding-y-mobile: 20px !default;
 $app-content-padding-x: 85px !default;
-$app-content-padding-x-mobile: 15px !default;
+$app-content-padding-x-mobile: null !default;
 
 // Top base
 $app-top-base-transition: none !default;
@@ -73,7 +73,7 @@ $app-top-sticky-height-mobile: 64px !default;
 // Header base
 $app-header-base-transition: none !default;
 $app-header-base-height: 84px !default;
-$app-header-base-height-mobile: 72px !default;
+$app-header-base-height-mobile: 84px !default;
 $app-header-base-z-index: null !default;
 $app-header-base-z-index-mobile: null !default;
 $app-header-base-bg-color: null !default;
@@ -103,7 +103,7 @@ $app-header-sticky-border-bottom: null !default;
 $app-aside-base-transition: $app-general-transition-duration $app-general-transition-timing !default;
 $app-aside-base-width: 880px !default;
 $app-aside-base-width-mobile: 689px !default;      
-$app-aside-base-z-index: 981 !default;
+$app-aside-base-z-index: 9981 !default;
 $app-aside-base-z-index-mobile: 981 !default; 
 $app-aside-base-bg-color: #fff !default;
 $app-aside-base-box-shadow: 0 0 28px 0 rgba(82, 63, 105, 0.05) !default;
@@ -166,12 +166,12 @@ $burger-icon-config: (
     space: 5px,
     radius: 3px,
     theme: (
-        default: $white,
-        hover: $secondary,
-        active: $secondary,
+        default: $dark,
+        hover: $primary,
+        active: $primary,
 
         dark: (
-            color: $primary
+            color: $white
         )
     )
 ) !default;

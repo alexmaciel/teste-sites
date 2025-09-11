@@ -115,6 +115,7 @@ $autoload['helper'] = array(
 	'api_custom_fields',
 	'api_admin',
 	'api_general',
+	'api_countries',
 	'api_html',
 	'api_func',
 	'api_db',

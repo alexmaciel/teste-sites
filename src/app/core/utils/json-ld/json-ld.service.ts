@@ -1,9 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 
-export interface JsonLd {
-  [param: string]: string | Object;
-}
+export type JsonLd = Record<string, string | object>;
 
 @Injectable()
 export class JsonLdService {

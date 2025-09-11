@@ -4,17 +4,17 @@
             <span [translate]="'header.cases'"></span>
         </div>          
     </div>
-    <div class="row justify-content-center">
+    <div class="row">
         <ngx-swiper swiperContainerId="partners-slider" [config]="config">
             <swiper-container #swiper class="slider" init="false">
                 @for (item of partners.items$ | async; track item.id) {
-                    <swiper-slide class="slider-slide">
-                        <div class="container-image h-100px">
+                    <swiper-slide class="slider-slide me-0 me-lg-8">
+                        <div class="container-image h-50px h-lg-100px">
                             <img 
                                 [ngSrc]="item.folder + item.file_name" 
                                 [alt]="item.name" 
                                 class="image bg-grayscale" 
-                                ngSrcset="33w" sizes="33vw" fill 
+                                ngSrcset="25w" sizes="25vw" fill 
                             />
                         </div>
                     </swiper-slide>                

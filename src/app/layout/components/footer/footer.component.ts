@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -13,9 +13,9 @@ import {
   selector: 'app-footer',
   templateUrl: './footer.component.html'
 })
-export class FooterComponent {
+export class FooterComponent implements OnInit, OnDestroy {
   @Input() appFooterContainer?: 'fixed' | 'fluid';
-  @Input() appFooterContainerCSSClass: string = '';
+  @Input() appFooterContainerCSSClass = '';
 
   private unsubscribe: Subscription[] = [];
 
@@ -41,7 +41,7 @@ export class FooterComponent {
   }    
 
   calculateMenuItemCssClass(url: string): string {
-    let path: any = this.localize.translateRoute(url)
+    const path: any = this.localize.translateRoute(url)
     return checkIsActive(this.router.url, path) ? 'active' : '';
   }    
 }

@@ -1,7 +1,7 @@
 {
 	"en": "En",
 	"es": "Es",	
-	"pt": "Pt-BR",
+	"pt": "Pt",
 	"DEFAULT_TITLE": "Site",
 	"ROUTES.company": "empresa",
 	"ROUTES.contact": "contato",
@@ -40,6 +40,7 @@
 		"seeMapBtn": "Ver Mapa",
 		"sendBtn": "Enviar",
 		"sortBtn": "Ordenar",
+		"filterBtn": "Filtrar",
 		"videoBtn": "Assista nossos Vídeos",
 		"channelBtn": "Nosso canal no Youtube",
 		"viewAllBtn": "Ver Todos",

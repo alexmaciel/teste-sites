@@ -27,7 +27,7 @@
               "google-libphonenumber",
               "quill-delta",
               "quill"
-            ],            
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "optimization": {
@@ -37,7 +37,7 @@
                 "inlineCritical": false
               },
               "fonts": true
-            },                 
+            },
             "assets": [
               "src/assets/icons/favicon.ico",
               "src/manifest.webmanifest",
@@ -124,11 +124,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }

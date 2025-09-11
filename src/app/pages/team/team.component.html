@@ -12,17 +12,17 @@
             </div>
         </div>        
     </section>          
-    <section class="pt-0 mt-n5 mt-lg-n10 mt-xl-n20">
+    <section class="pt-0 mt-n20">
         <div class="app-content-container">    
             <div class="container-xxl">
                 <div class="row row-cols-2 row-cols-lg-2 row-cols-xl-3 g-4 g-lg-8">
                     @for (team of teams.items$ | async; track team.id) {
-                        <div class="col-auto">
+                        <div class="col">
                             <div class="card card-rounded card-stretch-100 overflow-hidden">   
                                 <div class="card-body p-0">
                                     <div class="overlay">
                                         <div class="overlay-wrapper">                                    
-                                            <div class="container-image h-400px h-lg-500px">
+                                            <div class="container-image h-350px h-lg-500px">
                                                 <img 
                                                     [ngSrc]="team.file_avatar" 
                                                     ngSrcset="100w, 1000w" sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, calc(1600px / 4)" placeholder="40" loading="lazy" fetchpriority="auto" fill  

@@ -22,7 +22,7 @@ export class TranslationService {
     currentLanguage$: Observable<string>;
     currentLanguageSubject: BehaviorSubject<string>;
 
-    isTranslationsLoaded: boolean = false;
+    isTranslationsLoaded = false;
 
     get currentLanguageValue(): string {
         return this.currentLanguageSubject.value;

@@ -176,7 +176,7 @@ class MenuComponent {
 
   // Get item parent elements
   private _getItemParentElements = (item: HTMLElement) => {
-    const parents: Array<HTMLElement> = []
+    const parents: HTMLElement[] = []
     let parent: HTMLElement | null
     let i = 0
     let buffer: HTMLElement = item
@@ -265,7 +265,7 @@ class MenuComponent {
 
   // Get item child elements
   private _getItemChildElements = (item: HTMLElement) => {
-    const children: Array<HTMLElement> = []
+    const children: HTMLElement[] = []
     let child: HTMLElement | null
     let i = 0
     let buffer = item
@@ -327,7 +327,7 @@ class MenuComponent {
 
   // Test if item's sub is shown
   private _isItemSubShown = (item: HTMLElement) => {
-    let sub = this._getItemSubElement(item)
+    const sub = this._getItemSubElement(item)
     if (sub) {
       if (this._getItemSubType(item) === 'dropdown') {
         const subHTMLElement = sub as HTMLElement
@@ -568,7 +568,7 @@ class MenuComponent {
   private _hideAccordions = (item: HTMLElement) => {
     const itemsToHide = this.element.querySelectorAll('.hover[data-kt-menu-trigger]')
     if (itemsToHide && itemsToHide.length > 0) {
-      for (var i = 0, len = itemsToHide.length; i < len; i++) {
+      for (let i = 0, len = itemsToHide.length; i < len; i++) {
         const itemToHide = itemsToHide[i] as HTMLElement
 
         if (
@@ -927,8 +927,8 @@ class MenuComponent {
   public static updateDropdowns = () => {
     const items = document.querySelectorAll('.show.menu-dropdown[data-kt-menu-trigger]')
     if (items && items.length > 0) {
-      for (var i = 0, len = items.length; i < len; i++) {
-        var item = items[i]
+      for (let i = 0, len = items.length; i < len; i++) {
+        const item = items[i]
 
         if (DataUtil.has(item as HTMLElement, 'popper')) {
           // @ts-ignore

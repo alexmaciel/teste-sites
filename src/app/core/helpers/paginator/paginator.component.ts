@@ -10,7 +10,7 @@ import { PageSizes, PaginatorState } from '../models/paginator.model';
 export class PaginatorComponent implements OnInit {
   @Input() paginator!: PaginatorState;
   @Input() isLoading?: boolean;
-  @Output() paginate: EventEmitter<PaginatorState> = new EventEmitter();
+  @Output() paginate = new EventEmitter<PaginatorState>();
   pageSizes: number[] = PageSizes;
 
   disabled!: boolean;

@@ -24,7 +24,7 @@ export class PostService extends ApiService<Posts> {
   
   // READ
   override find(apiState: IAPIState | any): Observable<APIResponseModel<Posts>> {
-    let params: any = [];
+    const params: any = [];
 
     const filtrationFields = Object.keys(apiState);
     filtrationFields.forEach((keyName) => {

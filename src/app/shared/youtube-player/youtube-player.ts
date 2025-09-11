@@ -73,8 +73,8 @@ export class NgxYouTubePlayer implements AfterViewInit, OnChanges, OnDestroy {
         cc_load_policy: 0
     };
 
-    videoWidth = 640;
-    videoHeight = 390;
+    videoWidth = 0;
+    videoHeight = 0;
 
     disableCookies = false;
     disablePlaceholder = false;
@@ -83,7 +83,7 @@ export class NgxYouTubePlayer implements AfterViewInit, OnChanges, OnDestroy {
 
     constructor(
         private _cdr: ChangeDetectorRef,
-        @Inject(PLATFORM_ID) private platformId: Object,
+        @Inject(PLATFORM_ID) private platformId: object,
         private zone: NgZone
     ) {
         this._isBrowser = isPlatformBrowser(this.platformId);
@@ -109,8 +109,8 @@ export class NgxYouTubePlayer implements AfterViewInit, OnChanges, OnDestroy {
 
     ngAfterViewInit(): void {
         this.browserOnly(() => {
-            this.onResize();
-            window.addEventListener('resize', this.onResize);
+            this.resizeHandler();
+            window.addEventListener('resize', this.resizeHandler);
         });
     }
 
@@ -121,6 +121,8 @@ export class NgxYouTubePlayer implements AfterViewInit, OnChanges, OnDestroy {
             this._cdr.markForCheck();
         }
     }
+
+    private resizeHandler = this.onResize.bind(this);
 
     private updatePlayerVars() {
         if (this.playlistId) {
@@ -159,7 +161,10 @@ export class NgxYouTubePlayer implements AfterViewInit, OnChanges, OnDestroy {
         ) && !changes['videoId']?.isFirstChange();  
     }
 
-    onResize = (): void => {
+    /**
+     * 
+     */
+    onResize(): void {
         if (this._isBrowser) {
             const size = document.body.getBoundingClientRect();
             this.videoWidth = Math.min(this.ngxYouTubePlayer.nativeElement.clientWidth, size.width);
@@ -196,7 +201,7 @@ export class NgxYouTubePlayer implements AfterViewInit, OnChanges, OnDestroy {
     ngOnDestroy(): void {
         if (this._isBrowser) {
             this._player?.destroy();
-            window.removeEventListener('resize', this.onResize);
+            window.addEventListener('resize', this.resizeHandler);
         }
     }
 }

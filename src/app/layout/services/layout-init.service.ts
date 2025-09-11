@@ -32,8 +32,8 @@ export class LayoutInitService {
     }
 
     private initHeader() {
-		let timer: number = 0,
-            scrollPosition: number = 0,
+		let timer = 0,
+            scrollPosition = 0,
             height: number | any = 0;
 
         // clear body classes

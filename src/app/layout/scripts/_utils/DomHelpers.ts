@@ -127,7 +127,7 @@ function getElementParents(element: Element, selector: string) {
   }
 
   // Set up a parent array
-  const parents: Array<Element> = []
+  const parents: Element[] = []
 
   let el: Element | null = element
 
@@ -219,12 +219,12 @@ function throttle(timer: number | undefined, func: Function, delay?: number) {
   }, delay)
 }
 
-function getElementChildren(element: HTMLElement, selector: string): Array<HTMLElement> | null {
+function getElementChildren(element: HTMLElement, selector: string): HTMLElement[] | null {
   if (!element || !element.childNodes) {
     return null
   }
 
-  const result: Array<HTMLElement> = []
+  const result: HTMLElement[] = []
   for (let i = 0; i < element.childNodes.length; i++) {
     const child = element.childNodes[i]
     // child.nodeType == 1 => Element, Text, Comment, ProcessingInstruction, CDATASection, EntityReference
@@ -262,9 +262,9 @@ function slide(el: HTMLElement, dir: string, speed: number, callback: any) {
   }
 
   speed = speed ? speed : 600
-  let calcHeight = getElementActualHeight(el)
-  let calcPaddingTop: number = 0
-  let calcPaddingBottom: number = 0
+  const calcHeight = getElementActualHeight(el)
+  let calcPaddingTop = 0
+  let calcPaddingBottom = 0
 
   if (ElementStyleUtil.get(el, 'padding-top') && DataUtil.get(el, 'slide-padding-top') !== true) {
     DataUtil.set(el, 'slide-padding-top', ElementStyleUtil.get(el, 'padding-top'))
@@ -390,7 +390,7 @@ function getBreakpoint(breakpoint: string) {
 }
 
 function getAttributeValueByBreakpoint(incomingAttr: string): string | JSON {
-  let value = toJSON(incomingAttr)
+  const value = toJSON(incomingAttr)
   if (typeof value !== 'object') {
     return incomingAttr
   }
@@ -400,7 +400,7 @@ function getAttributeValueByBreakpoint(incomingAttr: string): string | JSON {
   let resultBreakpoint = -1
   let breakpoint
 
-  for (let key in value) {
+  for (const key in value) {
     if (key === 'default') {
       breakpoint = 0
     } else {

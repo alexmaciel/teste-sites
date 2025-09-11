@@ -34,8 +34,8 @@ export class SliderComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach((sb) => sb.unsubscribe());
   }   
     
-   // Swiper
-   config: SwiperOptions = {
+  // Swiper
+  config: SwiperOptions = {
     slidesPerView: 1,
     spaceBetween: 0,
     speed: 900,

@@ -167,24 +167,6 @@ function load_custom_lang_file($language)
         $CI->lang->load('custom_lang', $language);
     }
 }
-
-/**
- * Get country short name by passed id
- * @param  mixed $id county id
- * @return mixed
- */
-function get_country_short_name($id)
-{
-    $CI =& get_instance();
-    $CI->db->where('country_id', $id);
-    $country = $CI->db->get(db_prefix() . 'countries')->row();
-    if ($country) {
-        return $country->iso2;
-    }
-
-    return '';
-}
-
 /**
  * Available date formats
  * @return array
@@ -203,6 +185,12 @@ function get_available_date_formats()
 
     return $date_formats;
 }
+/**
+ * Get Language
+ *
+ * @param string $language
+ * @return void
+ */
 function getByLanguage($language = 'english')
 {
     $locale = 'en';
@@ -299,25 +287,6 @@ function get_locales()
     ];
 
     return hooks()->apply_filters('before_get_locales', $locales);
-}
-/**
- * Get country row from database based on passed country id
- * @param  mixed $id
- * @return object
- */
-function get_country($id)
-{
-    $CI = & get_instance();
-
-    $country = $CI->api_object_cache->get('db-country-' . $id);
-
-    if (!$country) {
-        $CI->db->where('country_id', $id);
-        $country = $CI->db->get(db_prefix().'countries')->row();
-        $CI->api_object_cache->add('db-country-' . $id, $country);
-    }
-
-    return $country;
 }
 /**
  * Get locale key by system language

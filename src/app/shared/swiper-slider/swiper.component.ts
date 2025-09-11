@@ -4,7 +4,7 @@ import { SwiperOptions } from 'swiper/types';
 
 
 @Component({
-  selector: '[ngx-swiper], ngx-swiper',
+  selector: 'ngx-swiper',
   templateUrl: './swiper.component.html',
   styleUrl: './swiper.component.scss',
     changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,7 +14,7 @@ export class SwiperComponent implements AfterViewInit {
   @ContentChild('swiper') swiperRef!: ElementRef<SwiperContainer>;
 
   @Input() swiperContainerId = '';
-  @Input('config') config?: SwiperOptions;
+  @Input() config?: SwiperOptions;
   
   index = 0;
   slidePerView = 1;

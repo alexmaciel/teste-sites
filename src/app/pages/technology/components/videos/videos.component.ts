@@ -20,6 +20,7 @@ export class VideosComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
 
+
   constructor(
     private modal: NgbModal,
     // Services
@@ -59,11 +60,11 @@ export class VideosComponent implements OnInit, OnDestroy {
     breakpoints: {
       '320': {
         spaceBetween: 0,
-        centeredSlides: true,
+        centeredSlides: false,
       },
       '768': {
         spaceBetween: 0,
-        centeredSlides: true,
+        centeredSlides: false,
       },
       '1024': {
         spaceBetween: 3,

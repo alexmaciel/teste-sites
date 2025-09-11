@@ -4,10 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // 3rd-Party plugins variables
 import { InlineSVGModule } from 'ng-inline-svg-2';
-import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbTooltipModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { BlogContentComponent } from './blog-content/blog-content.component';
 import { BlogFilterComponent } from './blog-content/blog-filter/blog-filter.component';
+import { BlogCategoriesComponent } from './blog-content/blog-categories/blog-categories.component';
 import { BlogSortComponent } from './blog-content/blog-sort/blog-sort.component';
 import { BlogListComponent } from './blog-content/blog-list/blog-list.component';
 // Details
@@ -30,7 +31,8 @@ import { CoreModule } from '../../core';
     BlogFilterComponent,
     BlogListComponent,
     BlogDetailsComponent,
-    BlogSortComponent
+    BlogSortComponent,
+    BlogCategoriesComponent
   ],
   imports: [
     CommonModule,
@@ -41,6 +43,7 @@ import { CoreModule } from '../../core';
     NgxSwiperModule,
     NgxOptimizedImageModule,  
     NgbTooltipModule,
+    NgbDropdownModule,
     InlineSVGModule, 
     CoreModule
   ],
