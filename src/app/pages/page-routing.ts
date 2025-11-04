@@ -38,6 +38,15 @@ const Routing: Routes = [
       loadChildren: () => import('./team/team.module').then((m) => m.TeamModule),
     },   
     {
+      path: 'partners',
+      title: 'nav.partnersNav',
+      data: {
+        animation: 'partner',
+        reuseComponent: false
+      },       
+      loadChildren: () => import('./partners/partners.module').then((m) => m.PartnersModule),
+    },       
+    {
       path: 'blog',
       title: 'nav.blogNav',
       data: {

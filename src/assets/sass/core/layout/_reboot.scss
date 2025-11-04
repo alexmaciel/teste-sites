@@ -25,7 +25,7 @@ body {
     font-family: $font-family-sans-serif;
     color: $gray-700;
     overflow-x: hidden;
-    overscroll-behavior: none;
+    //overscroll-behavior: none;
     scroll-behavior: smooth;
     min-height: 100vh;    
 
@@ -44,6 +44,10 @@ body {
     display: flex;
     flex-direction: column;
 
+    p {
+        word-spacing: normal;
+    }
+    
     a:hover,
     a:active,
     a:focus {

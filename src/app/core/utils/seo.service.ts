@@ -44,7 +44,7 @@ const app_separate = ' - ';
 })
 export class SeoService {
 
-  company_name = 'MetaBix';
+  company_name = 'metaBIX';
 
   constructor(
     private readonly metaService: Meta,

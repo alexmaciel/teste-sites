@@ -8,10 +8,13 @@ import {
   ISortView,
   IGroupingView,
   IFilterView,
+} from '../../../../shared';
+
+import { 
   // Services
   PostService,
   Paging,
-} from '../../../../core';
+ } from '../../../../core';
 
 @Component({
   selector: 'app-blog-list',

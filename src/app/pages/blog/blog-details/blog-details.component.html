@@ -21,10 +21,18 @@
         <div class="container-xxl">
             <div class="blog-cards">
                 <div class="card card-rounded">   
-                    <div class="card-body p-lg-14">   
+                    <div class="card-body p-lg-14" [ngClass]="isLoading ? 'overlay overlay-block' : ''">
+                        <!--Overlay Layer-->
+                        @if(isLoading) {
+                            <div class="overlay-layer bg-light align-items-center justify-content-center z-index-2">
+                                <div class="spinner-border text-primary" role="loading">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>     
+                        }                   
                         @if(post) {
                             <div class="d-flex flex-column flex-xl-row">
-                                <div class="d-flex flex-lg-row-fluid">
+                                <div class="d-block flex-lg-row-fluid">
                                     <div class="mb-16">
                                         <div class="mb-8 my-1">
                                             <div class="d-flex flex-stack align-items-center mb-6 w-100">
@@ -56,8 +64,7 @@
                                                     </span>                                                    
                                                 </div>                                                
                                             </div>
-                                            <div class="d-flex justify-content-between"></div>
-                                            <div class="overlay mt-8">   
+                                            <div class="w-100 mt-8">   
                                                 <!--Image-->
                                                 @if(post.pictures.length > 0){
                                                     <ngx-swiper swiperContainerId="blog-details-slider" [config]="config">
@@ -67,7 +74,7 @@
                                                                     <div class="post-image h-250px h-lg-450px">
                                                                         <div class="container-image rounded-4">
                                                                             <img 
-                                                                                [ngSrc]="pic.file_name" ngSrcset="100w, 1000w" sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, calc(1600px / 3)" placeholder="40" loading="lazy" fetchpriority="auto" fill
+                                                                                [ngSrc]="post.folder + pic.file_name" ngSrcset="100w, 1000w" sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, calc(1600px / 3)" placeholder="40" loading="lazy" fetchpriority="auto" fill
                                                                                 [alt]="pic.subject" 
                                                                                 class="image" 
                                                                             />                     
@@ -82,7 +89,7 @@
                                             </div>                                        
                                         </div>
                                         <div class="fs-5 fw-normal text-dark">
-                                            <div [innerHTML]="post.long_description | safe:'html | style'"></div>
+                                            <div [innerHTML]="post.long_description | safe:'html'"></div>
                                         </div>
                                     </div>
                                 </div>

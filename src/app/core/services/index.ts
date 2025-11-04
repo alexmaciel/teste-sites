@@ -7,9 +7,11 @@ export * from './company.service';
 export * from './company-items.service';
 export * from './company-goals.service';
 export * from './partners.service';
+export * from './customers.service';
 export * from './posts.service';
 export * from './team.service';
 export * from './category.service';
+export * from './carousel.service';
 // Technology
 export * from './technology.service';
 export * from './technology-items.service';

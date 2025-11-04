@@ -1,7 +1,7 @@
 import { Category } from './category.model';
 import { Pictures } from './pictures.model';
 
-import { BaseModel } from '../helpers';
+import { BaseModel } from '../../shared/helpers';
 
 export interface Posts extends BaseModel {
     id: number;

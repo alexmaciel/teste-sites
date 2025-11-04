@@ -1,5 +1,10 @@
-export * from './swiper-slider';
-export * from './optimized-image';
-export * from './youtube-player';
+// Helpers
+export * from './helpers';
+// Directives
+export * from './directives';
+// Plugins
+export * from './plugins/swiper-slider';
+export * from './plugins/optimized-image';
+export * from './plugins/youtube-player';
 
 export { SharedModule } from './shared.module';

@@ -1,8 +1,9 @@
 import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, of, Subscription, switchMap } from 'rxjs';
+import { catchError, finalize, of, Subscription, switchMap, take } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
 
+import { LocalizeRouterService } from '@gilsdav/ngx-translate-router';
 import { SwiperOptions } from 'swiper/types';
 
 import { 
@@ -19,14 +20,16 @@ import {
   templateUrl: './blog-details.component.html'
 })
 export class BlogDetailsComponent implements OnInit, OnDestroy {
-  post: Posts | undefined | null;
+  post!: Posts | null;
+  slug!: string | null;
 
-  slug: string | undefined | null;
+  isLoading = false;
 
   private subscriptions: Subscription[] = [];
 
   constructor(
     private cdr: ChangeDetectorRef,
+    private localize: LocalizeRouterService,
     private route: ActivatedRoute,
     private router: Router,
     // seo
@@ -40,10 +43,11 @@ export class BlogDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void { 
     const sb = this.route.paramMap.pipe(
+      take(1),
       switchMap(params => {
         // get slug from URL
         this.slug = String(params.get('slug'));
-        if (this.slug || this.slug !== '') {
+        if (this.slug && this.slug !== '') {
           return this.posts.getItemById(this.slug);
         }
         return of(undefined);
@@ -52,14 +56,20 @@ export class BlogDetailsComponent implements OnInit, OnDestroy {
         console.log(errorMessage);
         return of(undefined);
       }),
+      finalize(() => {
+          this.isLoading = false;
+          this.cdr.markForCheck();        
+      })      
     ).subscribe((res) => {
       if (!res) {
-        this.router.navigate(['/blog'], { relativeTo: this.route });
+        this.router.navigate(
+          [this.localize.translateRoute(['/blog']), { relativeTo: this.route }]
+        );   
       }
       this.post = res as Posts;
-      this.cdr.detectChanges();
-      this.loadSeo();
+
       this.loadCategory();
+      this.loadSeo();
     });
     this.subscriptions.push(sb);       
   }    

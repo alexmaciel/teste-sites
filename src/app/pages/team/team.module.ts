@@ -5,10 +5,9 @@ import { TeamRoutingModule } from './team-routing.module';
 import { TeamComponent } from './team.component';
 
 import { 
-  NgxOptimizedImageModule
- } from '../../shared';
-
-import { CoreModule } from '../../core';
+  NgxOptimizedImageModule,
+  SharedModule 
+} from '../../shared';
 
 @NgModule({
   declarations: [
@@ -19,7 +18,7 @@ import { CoreModule } from '../../core';
     TeamRoutingModule,
     // Plugins
     NgxOptimizedImageModule,
-    CoreModule
+    SharedModule
   ]
 })
 export class TeamModule { }

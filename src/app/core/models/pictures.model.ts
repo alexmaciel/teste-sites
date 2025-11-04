@@ -10,5 +10,6 @@ export interface Pictures {
     external?: string;
     thumbnail_link?: string;
     external_link?: string;
-    thumb?: string | any;
+    thumb: string;
+    url: string;
 }

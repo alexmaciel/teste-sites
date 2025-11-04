@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 import { TranslationService } from './translation.service';
 
 import { environment } from '../../../environments/environment';
-import { APIResponseModel, IAPIState, baseFilter } from '../helpers';
+import { APIResponseModel, IAPIState, baseFilter } from '../../shared/helpers';
 
 import { ApiService } from './api.service';
 import { Posts } from '../models';

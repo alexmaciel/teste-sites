@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SwiperOptions } from 'swiper/types';
 
-import { VideoComponent } from '../../../../core/components';
+import { VideoComponent } from '../../../../shared/components';
 
 import { 
   TechnologyVideoService
@@ -19,7 +19,6 @@ import {
 export class VideosComponent implements OnInit, OnDestroy {
 
   private subscriptions: Subscription[] = [];
-
 
   constructor(
     private modal: NgbModal,
@@ -38,7 +37,7 @@ export class VideosComponent implements OnInit, OnDestroy {
   } 
      
   openVideo(videoId: string, videoName?: string) {
-    const modalRef = this.modal.open(VideoComponent, { size: 'xl', centered: true });
+    const modalRef = this.modal.open(VideoComponent, { size: 'xl', centered: true, windowClass: 'modal-custom' });
     modalRef.componentInstance.videoId = videoId;
     modalRef.componentInstance.videoName = videoName;
   }  

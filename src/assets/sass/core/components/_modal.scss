@@ -17,7 +17,7 @@
 }
 
 // Sticky
-.modal.modal-sticky {
+.modal-sticky {
 	&.modal-sticky-bottom-end {
 	  $sticky-width: 500px;
 	  $sticky-width-lg: 600px;
@@ -25,7 +25,7 @@
 	  padding: 0 !important;
 	  max-width: $sticky-width;
 	  height: auto;
-	  position: absolute;
+	  position: fixed;
 	  left: auto;
 	  top: auto;
 	  bottom: 25px;

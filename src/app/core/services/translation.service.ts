@@ -71,6 +71,7 @@ export class TranslationService {
     setLanguage(lang: string) {
         if (lang) {
             this.currentLanguageSubject.next(lang);
+            /*
             this.translate.use(lang).subscribe({
                 next: () => {
                     this.isTranslationsLoaded = true;
@@ -81,6 +82,7 @@ export class TranslationService {
                     this.isTranslationsLoaded = true;
                 }            
             });
+            */
             this.localize.changeLanguage(lang, { replaceUrl: true });
         }
     }

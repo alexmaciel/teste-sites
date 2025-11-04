@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { LayoutInitService } from './services/layout-init.service';
+import { SplashScreenService } from './components/splash-screen/splash-screen.service';
 
 @Component({
   selector: 'app-layout',
@@ -30,6 +31,7 @@ export class LayoutComponent {
     private router: Router,
     private initService: LayoutInitService,
   ) {
+
     this.initService.initProps();
     // define layout type and load layout
     this.router.events.subscribe((event) => {

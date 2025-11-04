@@ -120,7 +120,11 @@
 		"year": "Year",		
 		"description": "Description",
 		"cases": "Cases",
+		"clients": "Clients",
 		"time": "min read",
+		"solutions": "Solutions",
+		"partners": "Partners",
+
 		"technologyTitle": "Our Technology",
 		"locationTitle": "We help producers make better decisions worldwide.",
 		"locationInfo": "Have our technology in your region.",
@@ -128,6 +132,10 @@
 		"technologyVideoInfo": "On this channel you’ll find relevant content on outbreaks and microbiological risks, as well as predictive technologies developed by MetaBix Biotech.",
 		"requestTitle": "Request a Demo",
 		"requestInfo": "Contact us to request a demonstration of our service",
+
+		"solutionsTitle": "Differentiators of our solution",
+
+
 		"blogInfo": "Our News",
 		"blogLast": "Latest News",
 		"business": "Build your business",
@@ -195,7 +203,8 @@
 		"teamNav": "Team",
 		"termsNav": "Terms of Use",
 		"workNav": "Work With Us",
-		"technologyNav": "Our Technology"
+		"technologyNav": "Our Technology",
+		"partnersNav": "Partners"
 	},
 	"table": {
 		"tab_aplication": "Application",

@@ -7,12 +7,22 @@
       "installMode": "prefetch",
       "resources": {
         "files": [
-          "/favicon.ico",
-          "/index.html",
+          "/assets/icons/*.png",
+          "/assets/svg/*.svg",
+          "/assets/images/*.svg",
+          "/assets/images/*.png",
+          "/assets/images/*.jpg",          
+          "/assets/images/*.webp",          
           "/manifest.webmanifest",
+          "/favicon.ico",
+          "/index.html",          
           "/*.css",
           "/*.js"
-        ]
+        ],
+        "urls": [
+          "https://fonts.googleapis.com/css2?family=Krub:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap",
+          "https://fonts.googleapis.com/**"
+        ]        
       }
     },
     {
@@ -26,5 +36,40 @@
         ]
       }
     }
-  ]
+  ],
+  "dataGroups": [
+    {
+      "name": "api-fresh",
+      "urls": [
+        "https://metabixbiotech.com/api/clients/slides**",
+        "https://metabixbiotech.com/api/clients/posts**"
+      ],
+      "cacheQueryOptions": { "ignoreSearch": false },
+      "cacheConfig": {
+        "strategy": "freshness",
+        "timeout": "0u",
+        "maxSize": 100,
+        "maxAge": "30m"
+      }
+    },
+    {
+      "name": "api-static",
+      "urls": [
+        "https://metabixbiotech.com/api/clients/categories**",
+        "https://metabixbiotech.com/api/clients/company**",
+        "https://metabixbiotech.com/api/clients/companyItems**",
+        "https://metabixbiotech.com/api/clients/companyGoals**",
+        "https://metabixbiotech.com/api/clients/technology**",
+        "https://metabixbiotech.com/api/clients/technologyItems**",
+        "https://metabixbiotech.com/api/clients/social**",
+        "https://metabixbiotech.com/api/clients/settings**"
+      ],
+      "cacheQueryOptions": { "ignoreSearch": false },
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 200,
+        "maxAge": "1d"
+      }
+    }           
+  ]    
 }

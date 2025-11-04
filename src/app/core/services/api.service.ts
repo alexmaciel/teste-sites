@@ -9,7 +9,7 @@ import {
   APIResponseModel, 
   IAPIState, 
   BaseModel 
-} from '../helpers';
+} from '../../shared/helpers';
 
 import { environment } from '../../../environments/environment';
 

@@ -15,7 +15,7 @@
                             <div class="row">  
                                 <div class="col-8 d-flex flex-column">                       
                                     <div class="section-head mb-8">
-                                        <span [translate]="'header.contactTitle'"></span>
+                                        <span [translate]="'header.contactTitle'" id="splits"></span>
                                     </div>  
                                     <h1 class="fs-4 fw-normal text-primary mb-8 mb-lg-12">
                                         {{ 'header.contactInfo' | translate }}                                
@@ -151,7 +151,7 @@
                                                         <quill-editor
                                                             name="message"
                                                             formControlName="message"
-                                                            placeholder="Escreve sua mensagem"
+                                                            [placeholder]="'form.messageReqVal' | translate"
                                                             [class.is-invalid]="isControlInvalid('message')"
                                                             [class.is-valid]="isControlValid('message')"                                       
                                                             class="form-control form-control-solid w-100"

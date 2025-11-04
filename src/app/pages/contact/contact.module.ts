@@ -14,7 +14,7 @@ import {
 import { ContactRoutingModule } from './contact-routing.module';
 import { ContactComponent } from './contact.component';
 
-import { CoreModule } from '../../core';
+import { SharedModule } from '../../shared';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,7 @@ import { CoreModule } from '../../core';
     NgSelectModule,
     QuillModule.forRoot(),
     InlineSVGModule,
-    CoreModule
+    SharedModule
   ]
 })
 export class ContactModule { }

@@ -40,8 +40,6 @@ export class AppComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    //this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    //this.router.onSameUrlNavigation = 'reload';
     const routerSubscription = this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd || event instanceof NavigationCancel) {
         // Trick the Router into believing it's last link wasn't previously loaded
@@ -54,7 +52,6 @@ export class AppComponent implements OnInit, OnDestroy {
         this.analytics.trackPageViews();
         // scroll to top on every route change
         if (typeof document !== 'undefined') {
-          window.scroll(0, 0);
           // to display back the body content
           setTimeout(() => {
             document.body.classList.add('page-loaded');

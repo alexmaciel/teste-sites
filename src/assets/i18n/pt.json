@@ -120,7 +120,10 @@
 		"year": "Ano",		
 		"description": "Descrição",
 		"cases": "Cases",
+		"clients": "Clientes",
 		"time": "min de leitura",
+		"solutions": "Soluções",
+		"partners": "Parceiros",
 
 		"technologyTitle": "Nossa Tecnologia",
 		"locationTitle": "Ajudamos produtores a tomar melhores decisões em todo o mundo.",
@@ -129,6 +132,8 @@
 		"technologyVideoInfo": "Neste canal você encontra conteúdos relevantes sobre surtos e riscos microbiológicos, além das tecnologias preditivas desenvolvidas pela MetaBix Biotech.",
 		"requestTitle": "Solicitar Demonstração",
 		"requestInfo": "Entre em contato para solicitar uma demonstração do nosso serviço",
+		"solutionsTitle": "Diferenciais da nossa solução",
+
 
 		"blogInfo": "Nossas Notícias",
 		"blogLast": "Últimas Notícias",
@@ -197,7 +202,8 @@
 		"teamNav": "Equipe",
 		"termsNav": "Termos de Uso",
 		"workNav": "Trabalhe Conosco",
-		"technologyNav": "Nossa Tecnologia"
+		"technologyNav": "Nossa Tecnologia",
+		"partnersNav": "Parceiros"
 	},
 	"table": {
 		"tab_aplication": "Aplicação",

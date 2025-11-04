@@ -10,8 +10,10 @@ export { Company } from './company.model';
 export { Items } from './items.model';
 export { Goals } from './goals.model';
 export { Partners } from './partners.model';
+export { Customers } from './customers.model';
 export { Technology } from './technology.model';
 export { Category } from './category.model';
+export { Carousel } from './carousel.model';
 export { Team } from './team.model';
 
 export { Countries } from './countries.model';

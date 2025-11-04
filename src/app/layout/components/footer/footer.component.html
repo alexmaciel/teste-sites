@@ -1,8 +1,8 @@
-<footer
-    class="app-container"
-    [ngClass]="appFooterContainerCSSClass"
-    [ngClass]="{'container-xxl': appFooterContainer === 'fixed', 'container-fluid': appFooterContainer === 'fluid'}">
-    <div class="app-footer-content">
+<footer class="app-footer-content">
+    <div
+        class="app-container"
+        [ngClass]="appFooterContainerCSSClass"
+        [ngClass]="{'container-xxl': appFooterContainer === 'fixed', 'container-fluid': appFooterContainer === 'fluid'}">
         <div class="row align-items-center w-100 mb-10">
             <div class="col">
                 <div class="d-flex flex-column align-items-start">
@@ -162,7 +162,7 @@
                 <span class="sub">
                     <a href="https://mova.ppg.br/" title="Mova Comunicação e Marketing">
                         <span
-                            [inlineSVG]="'./assets/img/mova.svg'" class="svg-icon svg-icon-4x svg-icon-white img_mova">
+                            [inlineSVG]="'./assets/img/mova.svg'" class="svg-icon svg-icon-4x svg-icon-white">
                         </span>                   
                     </a>
                 </span>

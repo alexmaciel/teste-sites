@@ -6,7 +6,7 @@
                     <div class="col-lg-8 col-xl-10">   
                         @if(company.items$ | async; as item) {
                             <div class="section-head mb-8">
-                                <span [translate]="'header.companyTitle'"></span>
+                                <span [translate]="'header.companyTitle'" id="splits"></span>
                             </div>                 
                             <div class="fs-5 fw-normal mb-16">      
                                 <div [innerHTML]="item.long_description | safe:'html'"></div>                                          
@@ -32,7 +32,7 @@
                 </div>                
             </div>
         </div>
-    </section>
+    </section>   
 </div>
 <!-- Footer -->
 <div class="index-location">
@@ -43,10 +43,65 @@
         </div>
     </section>
 </div>
+<div class="team-page">
+    <section class="page-title bg-secondary">
+        <div class="app-content-container">    
+            <div class="container-xxl">
+                <div class="row align-items-center mb-10">
+                    <div class="col-lg-8 col-xl-10">   
+                        <div class="section-head mb-8">
+                            <span [translate]="'header.teamTitle'" class="text-white" id="splits"></span>
+                        </div>                 
+                    </div>                      
+                </div>
+            </div>
+        </div>        
+    </section>          
+    <section class="pt-0 mt-n20">
+        <div class="app-content-container">    
+            <div class="container-xxl">
+                <div class="row row-cols-2 row-cols-lg-2 row-cols-xl-3 g-4 g-lg-8">
+                    @for (team of teams.items$ | async; track team.id) {
+                        <div class="col">
+                            <div class="card card-rounded card-stretch-100 overflow-hidden">   
+                                <div class="card-body p-0">
+                                    <div class="overlay">
+                                        <div class="overlay-wrapper">                                    
+                                            <div class="container-image h-350px h-lg-500px">
+                                                <img 
+                                                    [src]="team.file_avatar" 
+                                                    ngSrcset="100w, 1000w" sizes="(max-width: 540px) 100vw, (max-width: 768px) 50vw, calc(1600px / 4)" placeholder="40" loading="lazy" fetchpriority="auto" fill  
+                                                    [alt]="team.name" 
+                                                    class="image" 
+                                                    style="position: initial;"
+                                                />
+                                            </div>    
+                                            <div class="overlay-layer">
+                                                <div class="overlay-opacity overlay-transform p-8 z-index-2">
+                                                    <h4 class="fs-4 font-bold text-white mb-2">
+                                                        {{ team.name }}
+                                                    </h4>
+                                                    <div class="text-white">
+                                                        <div [innerHTML]="team.description"></div>
+                                                    </div>
+                                                </div>                                            
+                                                <span class="overlay-background"><span></span></span>
+                                            </div>       
+                                        </div>
+                                    </div>                                                                     
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>          
+            </div>
+        </div>
+    </section>     
+</div>
 <div class="app-content-container">
     <div class="index-cases">
         <section class="bg-white">
-            <app-cases></app-cases>
+            <app-customers></app-customers>
         </section>
     </div>
 </div>

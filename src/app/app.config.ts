@@ -1,6 +1,6 @@
 import { ApplicationConfig, importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
-import { HttpClient, provideHttpClient, withFetch, withInterceptorsFromDi, withNoXsrfProtection } from '@angular/common/http';
-import { provideRouter, RouteReuseStrategy, TitleStrategy, withDisabledInitialNavigation } from '@angular/router';
+import { HttpClient, HttpClientModule, provideHttpClient, withFetch, withInterceptorsFromDi, withNoXsrfProtection } from '@angular/common/http';
+import { provideRouter, RouteReuseStrategy, withDisabledInitialNavigation } from '@angular/router';
 import { Location } from '@angular/common';
 
 // 3rd-Party plugins variables
@@ -21,12 +21,15 @@ import { BrowserModule, provideClientHydration, withHttpTransferCacheOptions } f
 import { provideServiceWorker } from '@angular/service-worker';
 import { routes } from './app.routes';
 
-import { CoreModule, CustomReuseStrategy, JsonLdModule, TranslateTitleStrategy, createTranslateLoader } from './core';
+import { CoreModule, CustomReuseStrategy, JsonLdModule, createTranslateLoader } from './core';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideAnimations(),
     importProvidersFrom(
       BrowserModule, 
+      HttpClientModule,
       JsonLdModule,
       CoreModule,
       TranslateModule.forRoot({
@@ -59,7 +62,6 @@ export const appConfig: ApplicationConfig = {
       registrationStrategy: 'registerWhenStable:30000'
     }),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    { provide: TitleStrategy, useClass: TranslateTitleStrategy },     
     { provide: RouteReuseStrategy, useClass: CustomReuseStrategy },    
     provideHttpClient(
       withFetch(),

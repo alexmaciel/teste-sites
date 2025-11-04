@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { 
   CompanyService,
   CompanyItemService,
+  TeamService,
 } from '../../core';
 
 @Component({
@@ -19,11 +20,13 @@ export class CompanyComponent implements OnInit, OnDestroy {
     // Services
     public company: CompanyService,
     public items: CompanyItemService,
+    public teams: TeamService
   ) {}   
 
   ngOnInit(): void {
     this.loadCompany();
     this.loadItems();
+    this.loadTeams();
   }  
     
   loadCompany() {
@@ -37,6 +40,12 @@ export class CompanyComponent implements OnInit, OnDestroy {
     ).subscribe();
     this.subscriptions.push(sb);       
   }  
+
+  loadTeams() {
+    const sb = this.teams.getTeam().pipe(
+    ).subscribe();
+    this.subscriptions.push(sb);      
+  }
   
   ngOnDestroy(): void {
     this.subscriptions.forEach((sb) => sb.unsubscribe());

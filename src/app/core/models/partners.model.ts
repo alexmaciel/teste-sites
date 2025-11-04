@@ -3,7 +3,9 @@ export interface Partners {
     name: string;
     description: string;
     long_description: string;
-    folder?: string | any;
-    file_name?: string;
+    external_link: string;
+    folder?: string;
+    url: string;
+    thumb: string;
     order?: number;
 }

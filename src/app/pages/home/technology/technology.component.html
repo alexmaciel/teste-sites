@@ -14,7 +14,7 @@
         <div class="col-lg-6 col-xl-6 offset-xl-1">   
             @if(technology.items$ | async; as item) {
                 <div class="section-head mb-8">
-                    <span [translate]="'header.technologyTitle'"></span>
+                    <span [translate]="'header.technologyTitle'" id="splits"></span>
                 </div>                 
                 <div class="fs-5 fw-normal mb-16">      
                     <div [innerHTML]="item.description | safe:'html'"></div>                                          
@@ -38,27 +38,29 @@
         </div>      
     </div>
     <div class="row">
-        <div class="row row-cols-2 row-cols-lg-2 row-cols-xl-3 g-4">
-            @if(technology.items$ | async; as technology) {
-                @for (item of items.items$ | async; track item.id) {                        
-                    <div class="col">
-                        <div class="card card-reset card-stretch">   
-                            <div class="card-body p-0 p-lg-10">     
-                                @if(item.file_name !== '') {
-                                    <div class="mb-6">   
-                                        <span
-                                            [inlineSVG]="technology.folder + '/icons/' + item.file_name" 
-                                            class="svg-icon svg-icon-secondary svg-icon-4tx">
-                                        </span>                   
-                                    </div>                                                
-                                }                                                
-                                <h1 class="fs-1 fw-light text-primary mb-4 mb-lg-8">{{ item.name }}</h1>
-                                <div class="fw-normal">      
-                                    <div [innerHTML]="item.description | safe:'html'"></div>                                          
-                                </div>                                                             
+        <div class="row row-cols-2 row-cols-lg-3 row-cols-xl-4 g-8 gy-12">
+            @if(technology.items$ | async; as tech) {
+                @if (items.items$ | async; as arr) {
+                    @for (item of (arr | slice:0:4); track item.id) {                        
+                        <div class="col">
+                            <div class="card card-reset card-stretch">   
+                                <div class="card-body p-0">     
+                                    @if(item.file_name !== '') {
+                                        <div class="mb-6">   
+                                            <span
+                                                [inlineSVG]="tech.folder + item.file_name" 
+                                                class="svg-icon svg-icon-secondary svg-icon-4tx">
+                                            </span>                   
+                                        </div>                                                
+                                    }                                                
+                                    <h1 class="fs-1 fw-light text-primary mb-4 mb-lg-8" id="splits">{{ item.name }}</h1>
+                                    <div class="fw-normal">      
+                                        <div [innerHTML]="item.description | safe:'html'"></div>                                          
+                                    </div>                                                             
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    }
                 }
             }
         </div>

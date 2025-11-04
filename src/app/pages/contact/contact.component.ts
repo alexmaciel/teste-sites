@@ -8,7 +8,7 @@ import {
   // Validators
   CountryPhone,
   PhoneValidator,
-} from '../../core/helpers/validators';
+} from '../../shared/helpers/validators';
 
 import { 
   TranslationService,

@@ -4,8 +4,8 @@ import {
   Renderer2,
   ElementRef,
   OnDestroy,
-  OnInit,
   Input,
+  AfterViewInit,
 } from '@angular/core';
 import { NavigationCancel, NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -15,7 +15,7 @@ import gsap from 'gsap';
 @Directive({
   selector: '[data-toggle]',
 })
-export class ToggleMenuDirective implements OnInit, OnDestroy {
+export class ToggleMenuDirective implements AfterViewInit, OnDestroy {
   private element!: HTMLElement;
 
   private aside!: HTMLElement;
@@ -47,7 +47,9 @@ export class ToggleMenuDirective implements OnInit, OnDestroy {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  async ngAfterViewInit(): Promise<void> {
+    const { gsap } = await import('gsap');
+
     this.element = this.el.nativeElement;
 
     if (typeof document !== 'undefined') {
@@ -86,7 +88,7 @@ export class ToggleMenuDirective implements OnInit, OnDestroy {
       const unlistenUp = this.renderer.listen('document', 'pointerup', this.onDragEnd.bind(this));
       this.unlisteners.push(unlistenDown, unlistenMove, unlistenUp);
       */
-    }    
+    }     
   }
 
   @HostListener('click', ['$event'])

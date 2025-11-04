@@ -120,7 +120,11 @@
 		"year": "Año",		
 		"description": "Descripción",
 		"cases": "Casos",
+		"clients": "Clientes",
 		"time": "min de lectura",
+		"solutions": "Solucións",
+		"partners": "Parceiros",
+
 		"technologyTitle": "Nuestra tecnología",
 		"locationTitle": "Ayudamos a los productores a tomar mejores decisiones en todo el mundo.",
 		"locationInfo": "Ten nuestra tecnología en tu región.",
@@ -128,6 +132,9 @@
 		"technologyVideoInfo": "En este canal encontrarás contenidos relevantes sobre brotes y riesgos microbiológicos, además de las tecnologías predictivas desarrolladas por MetaBix Biotech.",
 		"requestTitle": "Solicitar demostración",
 		"requestInfo": "Contáctanos para solicitar una demostración de nuestro servicio",
+
+		"solutionsTitle": "Diferenciadores de nuestra solución",
+
 		"blogInfo": "Nuestras noticias",
 		"blogLast": "Últimas noticias",
 		"business": "Cree su negocio",
@@ -195,7 +202,8 @@
 		"teamNav": "Equipo",
 		"termsNav": "Términos de uso",
 		"workNav": "Trabaja con nosotros",
-		"technologyNav": "Nuestra tecnología"
+		"technologyNav": "Nuestra tecnología",
+		"partnersNav": "Parceiros"
 	},
 	"table": {
 		"tab_aplication": "Aplicación",

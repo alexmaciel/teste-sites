@@ -6,7 +6,10 @@ import { CommonModule } from '@angular/common';
 import { CompanyRoutingModule } from './company-routing.module';
 import { CompanyComponent } from './company.component';
 
-import { CoreModule } from '../../core';
+import { 
+  NgxOptimizedImageModule,
+  SharedModule 
+} from '../../shared';
 
 @NgModule({
   declarations: [
@@ -15,7 +18,8 @@ import { CoreModule } from '../../core';
   imports: [
     CommonModule,
     CompanyRoutingModule,
-    CoreModule
+    NgxOptimizedImageModule,
+    SharedModule
   ]
 })
 export class CompanyModule { }

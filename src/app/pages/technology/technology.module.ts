@@ -7,23 +7,26 @@ import { InlineSVGModule } from 'ng-inline-svg-2';
 // Components
 import { ItemsComponent } from './components/items/items.component';
 import { VideosComponent } from './components/videos/videos.component';
+import { ProtocolComponent } from './components/protocol/protocol.component';
 
 import { TechnologyRoutingModule } from './technology-routing.module';
 import { TechnologyComponent } from './technology.component';
 
-import { CoreModule } from '../../core';
 
 import { 
+  SharedModule,
+  // Plugins
   NgxSwiperModule,
   NgxYouTubePlayerModule,
-  NgxOptimizedImageModule
+  NgxOptimizedImageModule,
  } from '../../shared';
 
 @NgModule({
   declarations: [
     TechnologyComponent,
     ItemsComponent,
-    VideosComponent
+    VideosComponent,
+    ProtocolComponent
   ],
   imports: [
     CommonModule,
@@ -33,7 +36,7 @@ import {
     NgxOptimizedImageModule,   
     NgxYouTubePlayerModule,
     InlineSVGModule,
-    CoreModule    
+    SharedModule    
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

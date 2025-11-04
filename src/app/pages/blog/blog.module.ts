@@ -22,7 +22,7 @@ import {
   NgxOptimizedImageModule
  } from '../../shared';
 
-import { CoreModule } from '../../core';
+import { SharedModule } from '../../shared';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { CoreModule } from '../../core';
     NgbTooltipModule,
     NgbDropdownModule,
     InlineSVGModule, 
-    CoreModule
+    SharedModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA], 
 })

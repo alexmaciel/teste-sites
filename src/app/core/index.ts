@@ -2,8 +2,7 @@
 export * from './models';
 // Services
 export * from './services';
-// Helpers
-export * from './helpers';
+// Utils
 export * from './utils';
 
 export { CoreModule } from './core.module';

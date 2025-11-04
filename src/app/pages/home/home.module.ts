@@ -13,9 +13,10 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 
-import { CoreModule } from '../../core';
 
 import { 
+  SharedModule,
+  // Plugins
   NgxSwiperModule,
   NgxYouTubePlayerModule,
   NgxOptimizedImageModule
@@ -37,7 +38,7 @@ import {
     NgxYouTubePlayerModule,
     NgxOptimizedImageModule,  
     InlineSVGModule, 
-    CoreModule
+    SharedModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

@@ -1,34 +1,64 @@
 <ngx-swiper swiperContainerId="index-carousel" [config]="config">
     <swiper-container #swiper class="slider" init="false">
-        <swiper-slide class="slider-slide">
-            <div class="container-fluid">
-                <div class="row align-items-center justify-content-center gy-8 gy-lg-0">
-                    <div class="col-lg-6 col-xl-8">            
-                        <div class="slider-image">
-                            <div class="container-image">
-                                <img 
-                                    [ngSrc]="'./assets/img/cover-01.jpg'" 
-                                    ngSrcset="100w" sizes="100vw" priority fetchpriority="auto" fill style="position: initial;" 
-                                    [alt]="'lide.pictures.subject'" 
-                                    class="image" 
-                                />
+        @for (vid of carousel.items$ | async; track vid.id; let idx = $index) {
+            <swiper-slide class="slider-slide">
+                <div class="container-fluid">
+                    <div class="row align-items-center justify-content-center gy-8 gy-lg-0">
+                        <div class="col-lg-6 col-xl-8">   
+                        <div 
+                            class="card card-bordered card-rounded card-stretch-50 overflow-hidden cursor-pointer p-0">
+                            <div class="card-body p-0">
+                                <div class="slider-image h-450px h-lg-600px">
+                                    <div class="overlay h-100">
+                                        <div class="overlay-wrapper h-100">                                    
+                                            <div class="container-image">
+                                                <img 
+                                                    [ngSrc]="vid.thumb" 
+                                                    ngSrcset="100w" sizes="100vw" fetchpriority="auto" fill style="position: initial;" 
+                                                    [alt]="vid.name" 
+                                                    class="image object-fit-cover" 
+                                                />
+                                            </div>
+                                            @if(vid.type === 'video') {
+                                                <div class="overlay-layer" (click)="openVideo(vid.thumbId, vid.name)">
+                                                    <div class="overlay-icon z-index-2">
+                                                        <span
+                                                            [inlineSVG]="'./assets/img/play-line.svg'" 
+                                                            class="svg-icon svg-icon-4tx svg-icon-white">
+                                                        </span>
+                                                    </div>
+                                                    <div class="overlay-opacity overlay-transform p-8 z-index-2">
+                                                        <h4 class="fs-4 font-bold text-white mb-2">
+                                                            {{ vid.name }}
+                                                        </h4>
+                                                        <p class="text-white" [innerHTML]="vid.description"></p>
+                                                    </div>                                            
+                                                    <span class="overlay-background"><span></span></span>
+                                                </div>                                            
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                        </div>                                     
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-xl-4">
-                        <div class="slider-content ms-0 ms-lg-16">
-                            <div class="slider-title">
-                                <h1 class="fs-2x fw-bold mb-8">Ideal for real-time monitoring and  evaluation of interventions</h1>
+                        <div class="col-lg-6 col-xl-4">
+                            <div class="slider-content ms-0 ms-lg-16">
+                                <div class="slider-title">
+                                    <h1 class="fs-2x fw-bold mb-8">
+                                        {{ vid.name }}
+                                    </h1>
+                                </div>
+                                <app-request
+                                    [class]="'btn btn-lg btn-primary btn-motion btn-active-primary btn-active-motion-secondary'"
+                                    [title]="'button.requestBtn' | translate">
+                                </app-request>                
                             </div>
-                            <app-request
-                                [class]="'btn btn-lg btn-primary btn-motion btn-active-primary btn-active-motion-secondary'"
-                                [title]="'button.requestBtn' | translate">
-                            </app-request>                
                         </div>
                     </div>
                 </div>
-            </div>
-        </swiper-slide>
+            </swiper-slide>
+            }
     </swiper-container>
     <div class="swiper-pagination carousel-pagination"></div>
 </ngx-swiper>

@@ -43,7 +43,7 @@ export class TechnologyComponent implements OnInit, OnDestroy {
   }   
   
   openVideo() {
-    const modalRef = this.modal.open(VideosComponent, { size: 'xl', centered: true, modalDialogClass: 'modal-custom' });
+    const modalRef = this.modal.open(VideosComponent, { size: 'xl', centered: true, windowClass: 'modal-custom' });
   }  
 
   ngOnDestroy(): void {
